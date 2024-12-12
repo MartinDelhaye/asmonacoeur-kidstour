@@ -4,7 +4,7 @@
 class Etapes {
     private $id_etape;
     private $date_etape;
-    private $nom
+    private $nom;
     private $description_etape;
     private $lieu_etape;
     private $illustration_etape;
@@ -25,7 +25,7 @@ function __construct($date_etape,$nom,$description_etape,$lieu_etape,$illustrati
 
 
 }
-function Anime(){
-}
+// function Anime(){
+// }
 
 ?>

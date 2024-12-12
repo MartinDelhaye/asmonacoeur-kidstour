@@ -1,5 +1,4 @@
 <?php
-
 // Déclaration de la classe Etape
 class Etapes {
     private $id_etape;

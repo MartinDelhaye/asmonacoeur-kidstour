@@ -29,5 +29,3 @@ function obtenirDonnees($info, $table, $type_fetch,  $filtre = '', $trier = '') 
         die('Erreur : ' . $e->getMessage());
     }
 }
-
-

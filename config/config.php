@@ -1,7 +1,7 @@
 <?php
     $hote='localhost';
     $port='3306';
-    $nom_bd='asmonacoeur';
+    $nom_bd='asmonacoeur_kidstour';
     $identifiant='root';
     $mot_de_passe='';
     $encodage='utf8';

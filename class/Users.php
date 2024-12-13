@@ -1,5 +1,8 @@
 <?php
 
+spl_autoload_register(function ($class_name) {
+    include $class_name . '.php';
+});
 class Users
 {
     private $id_user;
@@ -8,7 +11,7 @@ class Users
     private $nom_user;
     private $prenom_user;
 
-    public function __construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user)
+    protected function __construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user)
     {
         $this->id_user = $id_user;
         $this->login_user = $login_user;
@@ -36,8 +39,15 @@ class Users
         return $this->prenom_user;
     }
 
-    // ------------------------ Méthode de connexion ------------------------
-
+    // ------------------------ Connexion ------------------------
+    /**
+     * Vérifie si un utilisateur peut se connecter
+     *
+     * @param string $login_user Le login de l'utilisateur
+     * @param string $mdp_user   Le mot de passe de l'utilisateur
+     *
+     * @return Users|string L'utilisateur connecté si la connexion est réussie, un message d'erreur sinon
+     */
     public static function connexion($login_user, $mdp_user)
     {
         $user = obtenirDonnees("*", "users", "fetch", "login_user" . " = '$login_user'");
@@ -45,8 +55,8 @@ class Users
         if ($user && password_verify($mdp_user, $user['mdp_user'])) {
             // Déterminez la classe à instancier
             $class = match ($user['type_user']) {
-                'admin', 'superAdmin' => Admin::class,
-                'membre' => Membre::class,
+                'membreAssociation', 'superAdmin' => MembreAssociation::class,
+                'participant' => Participant::class,
             };
 
             // Instanciation dynamique de la classe correcte
@@ -61,23 +71,46 @@ class Users
         }
         return 'Login ou Mot de passe incorrect'; // Connexion échouée
     }
-}
 
-class Membre extends Users
-{
-    public function __construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user)
+    public static function createUser($login_user, $mdp_user, $nom_user, $prenom_user)
     {
-        parent::__construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user);
+        global $bdd;
+        if (!$bdd) {
+            return 'Erreur : Connexion à la base de données échouée.';
+        }
+        
+        try {
+            
+        
+            $requetePreparee= $bdd->prepare('INSERT INTO users(login_user, mdp_user, nom_user, prenom_user, type_user) VALUES (:login_user, :mdp_user, :nom_user, :prenom_user, :type_user)');   
+
+            $requetePreparee->bindValue(':login_user', $login_user, PDO::PARAM_STR);
+            $requetePreparee->bindValue(':mdp_user', password_hash($mdp_user, PASSWORD_DEFAULT), PDO::PARAM_STR);    
+            $requetePreparee->bindValue(':nom_user', $nom_user, PDO::PARAM_STR);
+            $requetePreparee->bindValue(':prenom_user', $prenom_user, PDO::PARAM_STR);
+            $requetePreparee->bindValue(':type_user', 'membreAssociation', PDO::PARAM_STR);
+
+            $resultat = $requetePreparee->execute();
+        } catch (Exception $e) {
+            return 'Erreur : ' . $e->getMessage();
+        }
+        if ($resultat) {
+            return Users::connexion($login_user, $mdp_user);
+        }
+        return 'Erreur lors de la création de l’utilisateur';
+    }
+
+    public function deconnexion()
+    {
+        unset($_SESSION['compte']);
+    }
+
+    public static function loginExist($login_user)
+    {
+        $user = obtenirDonnees("*", "users", "fetch", "login_user" . " = '$login_user'");
+        if ($user) return true;
+        return false;
     }
 }
-
-class Admin extends Users
-{
-    public function __construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user)
-    {
-        parent::__construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user);
-    }
-}
-
 
 ?>

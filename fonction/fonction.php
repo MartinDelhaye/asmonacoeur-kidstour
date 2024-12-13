@@ -50,5 +50,75 @@ function metadata()
     return '
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        
     ';
+}
+
+
+// ------------------------ Action ------------------------
+
+/**
+ * Vérifie si l'utilisateur est connecté.
+ *
+ * Retourne les informations de l'utilisateur si connecté, FALSE sinon.
+ *
+ * @return array|false : informations de l'utilisateur connecté ou FALSE
+ */
+function isUserLoggedIn(){
+    startSession();
+    if (isset($_SESSION['compte'])) return $_SESSION['compte'];
+    return false;
+}
+
+/**
+ * Démarre une session ou reprend une session existante.
+ *
+ * Spécifie le nom de la session pour éviter les conflits avec d'autres applications.
+ * Configure les paramètres du cookie de session pour une durée de vie de 1 heure.
+ * Empêche l'accès au cookie via JavaScript.
+ * Empêche l'envoi du cookie via des requêtes intersites.
+ * Regénère l'ID de session toutes les 30 minutes pour éviter le vol de session.
+ * Vérifie l'inactivité et détruit la session si plus de 1 heure d'inactivité.
+ * Met à jour le timestamp de la dernière activité.
+ */
+function startSession()
+{
+    // Spécifiez le nom de la session pour éviter les conflits avec d'autres applications
+    session_name('ADMIN_SESSION');
+
+    // Configuration des paramètres du cookie de session
+    $sessionCookieParams = [
+        'lifetime' => 3600,           // Durée de vie de la session : 1 heure (3600 secondes)
+        'path' => '/',                // Le cookie est accessible sur tout le site
+        'domain' => '',               // Le domaine par défaut (pour tout le domaine actuel)
+        'secure' => isset($_SERVER['HTTPS']), // Si le site utilise HTTPS, le cookie n'est envoyé que via HTTPS
+        'httponly' => true,           // Empêche l'accès au cookie via JavaScript
+        'samesite' => 'Strict'        // Le cookie n'est pas envoyé avec les requêtes intersites
+    ];
+
+    session_set_cookie_params($sessionCookieParams);
+
+    // Démarrer la session ou reprendre une session existante
+    session_start();
+
+    // Regénérer l'ID de session pour éviter le vol de session
+    if (!isset($_SESSION['created'])) {
+        $_SESSION['created'] = time();
+    } elseif (time() - $_SESSION['created'] > 1800) { // Regénère l'ID toutes les 30 minutes
+        session_regenerate_id(true);    // Regénère l'ID de session et supprime l'ancien
+        $_SESSION['created'] = time();  // Met à jour le timestamp de création
+    }
+
+    // Vérifier l'inactivité
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 3600)) {
+        // Si plus de 1 heure d'inactivité, détruire la session
+        session_unset();     // Supprime toutes les variables de session
+        session_destroy();   // Détruit la session
+        header("Location: identification.php"); // Redirige vers la page de connexion
+        exit();
+    }
+
+    // Mettre à jour le timestamp de la dernière activité
+    $_SESSION['last_activity'] = time();
 }

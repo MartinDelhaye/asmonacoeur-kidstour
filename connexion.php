@@ -15,7 +15,7 @@ if (isset($_POST['login']) && !isset($_POST['nom'])) {
 
     if ($user instanceof Users) {
         $_SESSION['compte'] = $user;
-        print_r($_SESSION['compte']);
+        header('Location: compte.php');
     } else
         $message_erreur = $user;
 }

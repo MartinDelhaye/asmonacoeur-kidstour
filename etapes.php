@@ -8,61 +8,39 @@
 </head>
 <body>
     <h1>En cours</h1>
-
-    <div class="container">
-    <div class="row mb-4 align-items-center text-center">
-        <!-- Colonne pour l'image -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="images/plan1.png" class="img-fluid" alt="AS Monacoeur Kids Tour Fayence" style="max-width: 100%; height: auto;">
-        </div>
-        <!-- Colonne pour le texte -->
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-            <h5 class="fw-bold" style="color: red;">Fayence : 3 novembre</h5>
-            <p>
-                Rendez-vous au stage de football, chemin de la Garelle 83440 Fayence.
-                Pour cette étape de l’AS Monaco Kids Tour, la journée s’annonce riche en activités :
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row mb-4 align-items-center text-center">
-        <!-- Colonne pour l'image -->
-        <div class="col-md-6 d-flex justify-content-center">
-        <img src="images/plan2.png" class="img-fluid" alt="AS Monacoeur Kids Tour Fayence" style="width: 566px; height: 566px;">
-        </div>
-        <!-- Colonne pour le texte -->
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-            <h5 class="fw-bold" style="color: red;">Cap d'Ail : 17 novembre</h5>
-            <p>
-            Rendez-vous sur la place de la mairie
-Pour cette étape, l’AS Monacoeur s’annonce encore une fois riche en surprises et émotions. De nombreux défis sont mis en place pour tenter de gagner les calendriers AS Monaco spécial Noël
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row mb-4 align-items-center text-center">
-        <!-- Colonne pour l'image -->
-        <div class="col-md-6 d-flex justify-content-center">
-        <img src="images/plan3.png" class="img-fluid" alt="AS Monacoeur Kids Tour Fayence" style="width: 809px; height: 455px;">
-        </div>
-        <!-- Colonne pour le texte -->
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-            <h5 class="fw-bold" style="color: red;">La Turbie : 24 novembre</h5>
-            <p>
-            Rendez-vous sur la place de la mairie
-Pour cette étape notre équipe vous propose plusieurs divertissements : Rencontre avec notre fidèle mascotte Bouba. Entraînement de foot avec des joueurs de Monaco. Quiz sur l’AS Monaco . Création de décoration de Noël
-
-
-            </p>
+    <?php
+    $tab = [
+        ["illustratiom" => "url",
+        "titre"=>"exemple titre",
+        "texte"=>"Exemple texte",
+        "id_etape" =>"1"],
+        ["illustratiom" => "url",
+        "titre"=>"exemple titre",
+        "texte"=>"Exemple texte",
+        "id_etape" =>"1"],
+        ["illustratiom" => "url",
+        "titre"=>"exemple titre",
+        "texte"=>"Exemple texte",
+        "id_etape" =>"1"]
+    ];
+    foreach($tab as $etape):?>
+        <?php echo '<a href="etape.php?id_etape='.$etape["id_etape"].'">' ?>
+        <div class="container">
+        <div class="row mb-4 align-items-center text-center">
+            <!-- Colonne pour l'image -->
+            <div class="col-md-6 d-flex justify-content-center">
+            <img src="<?php echo $etape["illustration"]?>" class="img-fluid" alt="AS Monacoeur Kids Tour Fayence">
+            </div>
+            <!-- Colonne pour le texte -->
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h5 class="fw-bold" style="color: red;"><?php echo $etape["titre"]?></h5>
+                <p>
+                <?php echo $etape["texte"]?>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-
-
-            
+<?php endforeach;?>
+     
 </body>
 </html>

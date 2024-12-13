@@ -63,7 +63,7 @@ else
 <body>
     <!-- Connexion -->
     <form action="" method="POST">
-        <input type="text" name="login" placeholder="Nom d'utilisateur" required>
+        <label>Login : <input type="text" name="login" placeholder="Nom d'utilisateur" required></label>
         <input type="password" name="mdp" placeholder="Mot de passe" required>
         <input type="submit" value="Connexion">
     </form>

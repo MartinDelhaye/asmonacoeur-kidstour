@@ -1,0 +1,29 @@
+:root{
+    --color-main : #ff0000;
+    --color-secondary : #fff;
+    
+}
+
+.custom-bg-red {
+    background-color: var(--color-main); /* Remplacez par votre nuance de rouge */
+}
+
+.offcanvas-body{
+    background-color: var(--color-secondary);
+    color: var(--color-main);}
+
+
+.nav-item a{
+    color: var(--color-main);
+}
+
+nav-link{
+    color: var(--color-main);
+}
+
+header{
+    background-color: var(--color-main);
+}
+h1{
+    color: #fff;
+}

@@ -3,6 +3,7 @@
 spl_autoload_register(function ($class_name) {
     include $class_name . '.php';
 });
+
 class Users
 {
     private $id_user;
@@ -53,7 +54,7 @@ class Users
         $user = obtenirDonnees("*", "users", "fetch", "login_user" . " = '$login_user'");
 
         if ($user && password_verify($mdp_user, $user['mdp_user'])) {
-            // Déterminez la classe à instancier
+            // Détermine la classe à instancier
             $class = match ($user['type_user']) {
                 'membreAssociation', 'superAdmin' => MembreAssociation::class,
                 'participant' => Participant::class,
@@ -78,17 +79,13 @@ class Users
         if (!$bdd) {
             return 'Erreur : Connexion à la base de données échouée.';
         }
-        
         try {
-            
-        
-            $requetePreparee= $bdd->prepare('INSERT INTO users(login_user, mdp_user, nom_user, prenom_user, type_user) VALUES (:login_user, :mdp_user, :nom_user, :prenom_user, :type_user)');   
-
+            $requetePreparee = $bdd->prepare('INSERT INTO users(login_user, mdp_user, nom_user, prenom_user, type_user) VALUES (:login_user, :mdp_user, :nom_user, :prenom_user, :type_user)');
             $requetePreparee->bindValue(':login_user', $login_user, PDO::PARAM_STR);
-            $requetePreparee->bindValue(':mdp_user', password_hash($mdp_user, PASSWORD_DEFAULT), PDO::PARAM_STR);    
+            $requetePreparee->bindValue(':mdp_user', password_hash($mdp_user, PASSWORD_DEFAULT), PDO::PARAM_STR);
             $requetePreparee->bindValue(':nom_user', $nom_user, PDO::PARAM_STR);
             $requetePreparee->bindValue(':prenom_user', $prenom_user, PDO::PARAM_STR);
-            $requetePreparee->bindValue(':type_user', 'membreAssociation', PDO::PARAM_STR);
+            $requetePreparee->bindValue(':type_user', 'participant', PDO::PARAM_STR);
 
             $resultat = $requetePreparee->execute();
         } catch (Exception $e) {
@@ -108,7 +105,42 @@ class Users
     public static function loginExist($login_user)
     {
         $user = obtenirDonnees("*", "users", "fetch", "login_user" . " = '$login_user'");
-        if ($user) return true;
+        if ($user)
+            return true;
+        return false;
+    }
+
+    public function getListeEtapes($filtre = null, $ordre = null)
+    {
+        $infoSup = "";
+        if ($this instanceof MembreAssociation)
+            $tableJOIN = "organise";
+        else if ($this instanceof Participant) {
+            $infoSup = ", participe.nbr_enfant_participe";
+            $tableJOIN = "participe";
+        } else
+            return "Erreur : Type Utilisateur incorrect";
+
+        // Détermine les filtres et ordre
+        $filtreRequete = "users.id_user = " . $this->getIdUser();
+        if ($filtre)
+            $filtreRequete .= " AND $filtre";
+
+        $etapesUsers = obtenirDonnees(
+
+            'etapes.id_etape, etapes.date_etape, etapes.lieu_etape, etapes.nom_etape, etapes.illustration_etape' . $infoSup,
+            'etapes',
+            'fetchAll',
+            $filtreRequete,
+            $ordre,
+            [
+                ['tableBase' => 'etapes', 'tableToJoin' => $tableJOIN, 'lien' => 'id_etape'],
+                ['tableBase' => $tableJOIN, 'tableToJoin' => 'users', 'lien' => 'id_user']
+            ]
+        );
+        if ($etapesUsers) {
+            return $etapesUsers;
+        }
         return false;
     }
 }

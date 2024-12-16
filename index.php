@@ -6,8 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Site en cours de production</h1>
-    <p>clara</p>
-    <?php echo "salut";?>
+
+ <?php include 'Composant/Header.php'; ?>
+ <div class="imgfond ">
+ <img src="images/banderolle.jpg" alt="banderolle">
+ </div>
 </body>
 </html>

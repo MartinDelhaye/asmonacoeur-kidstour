@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 16 déc. 2024 à 09:18
+-- Généré le : lun. 16 déc. 2024 à 10:30
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -58,15 +58,15 @@ CREATE TABLE `etapes` (
   `description_etape` text NOT NULL,
   `illustration_etape` varchar(255) NOT NULL,
   `image_etape` varchar(255) NOT NULL,
-  `ville` varchar(100) NOT NULL,
-  `heure` varchar(50) NOT NULL
+  `ville_etape` varchar(100) NOT NULL,
+  `heure_etape` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `etapes`
 --
 
-INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `description_etape`, `illustration_etape`, `image_etape`, `ville`, `heure`) VALUES
+INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `description_etape`, `illustration_etape`, `image_etape`, `ville_etape`, `heure_etape`) VALUES
 (1, '2023-11-03', '2 Pl. de la République, 83440 Fayence', 'Le Kids Tour et Aleksandr Golovin à Fayence ce vendredi !', '\"Rendez-vous à la mairie.\r\nPour cette étape de l’AS Monaco Kids tour, la journée s’annonce riche en activités : \r\nRencontre avec notre mascotte Bouba et un invité surprise\r\nCible géante gonflable\r\nQuiz sur l’AS Monaco\r\nImmersion du Stade Louis-II grâce à des casques RV\r\nParties de FC 24 sur Playstation 5\r\nEt de belles surprises, telles qu’un maillot dédicacé de notre invité et des invitations pour des matchs sont à gagner ! Tout comme les goodies offerts, c’est une journée à ne pas manquer!\"', 'images/Temp_kidstour_Complet.jpg', 'images/Temp_kidstour_img_enfant1.jpg', 'Fayence', '13h30 - 17h30'),
 (2, '2023-11-17', '62 Av. du Trois Septembre, 06320 Cap-d\'Ail', 'Cap-d’Ail en mode Kids Tour !', '\"Rendez-vous à la mairie.\r\nPour cette étape de l’AS Monaco Kids tour, cette journée ensoleillée annonce pleins de surprises : \r\nRencontre avec notre mascotte et des invités surprises\r\nEntraînement de football\r\nQuiz sur l’AS Monaco\r\nParties de FC24 sur Playstation 5\r\nC’est aussi l’occasion de se mettre à l’épreuve lors d’un tire au but, les joueurs les plus précis auront le droit de repartir avec de belles surprises !\"', 'images/Temp_kidstour_Cap_dAil.jpg', 'images/Temp_kidstour_img_enfant2.jpg', 'Cap-d’Ail', '13h30 - 17h30'),
 (3, '2023-11-24', '1 Av. de la Victoire, 06320 La Turbie', 'Le Kids Tour à La Turbie vendredi 24 novembre !', '\"Rendez-vous sur la place de la mairie.\r\nPour cette étape notre équipe vous propose plusieurs divertissements : \r\nRencontre avec notre fidèle mascotte Bouba\r\nEntraînement de foot avec des joueurs de Monaco\r\nQuiz sur l’AS Monaco\r\nCréation de décoration de Noël\r\nLa caravane rouge et blanche sera toujours remplie de pleins de goodies à vous offrir, une autre journée à ne pas louper !\"', 'images/Temp_kidstour_LaTurbine.jpg', 'images/Temp_kidstour_img_enfant3.jpg', 'La Turbie', '13h30 - 17h30'),

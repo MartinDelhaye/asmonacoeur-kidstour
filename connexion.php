@@ -63,20 +63,20 @@ else
 <body>
     <!-- Connexion -->
     <form action="" method="POST">
-        <label>Login : <input type="text" name="login" placeholder="Nom d'utilisateur" required></label>
+        <label>Login : <input type="email" name="login" placeholder="Login - Email" required></label>
         <input type="password" name="mdp" placeholder="Mot de passe" required>
         <input type="submit" value="Connexion">
     </form>
 
     <!-- Inscription -->
     <form action="" method="POST">
-        <input type="text" name="login" placeholder="Nom d'utilisateur" required>
+        <input type="email" name="login" placeholder="Login - Email" required>
         <input type="password" name="mdp" placeholder="Mot de passe" required>
         <input type="password" name="mdp_verif" placeholder="Mot de passe" required>
         <input type="text" name="nom" placeholder="Nom" required>
         <input type="text" name="prenom" placeholder="Prenom" required>
 
-        <input type="submit" value="Connexion">
+        <input type="submit" value="Créer">
     </form>
 </body>
 

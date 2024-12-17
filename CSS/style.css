@@ -29,7 +29,6 @@
 header{
     background-color: var(--color-main);
 }
-
 .bande-rouge{
     background-image: url(../Images/banderolle.jpg);
     background-size: cover;
@@ -76,7 +75,32 @@ header{
     background-color: var(--color-main); /* Changement de couleur au survol */
     transform: scale(1.1); /* Zoom léger au survol */
   }
+:root{
+    --color-main : #bf2a38;
+    --color-secondary : #fff;
+    
+}
 
+.custom-bg-red {
+    background-color: var(--color-main); /* Remplacez par votre nuance de rouge */
+}
+
+.offcanvas-body{
+    background-color: var(--color-secondary);
+    color: var(--color-main);}
+
+
+.nav-item a{
+    color: var(--color-main);
+}
+
+nav-link{
+    color: var(--color-main);
+}
+
+header{
+    background-color: var(--color-main);
+}
 h1{
     color: #fff;
 }

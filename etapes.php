@@ -8,10 +8,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo metadata(); ?>
     <title>Etapes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <?php include('Composant/Header.php'); ?>
@@ -25,7 +23,7 @@
 
     <div class="container">
         <?php foreach ($tab as $etape): ?>
-            <a href="Etapes.php?id_etape=<?php echo $etape['id_etape']; ?>">
+            <a href="etape.php?id_etape=<?php echo $etape['id_etape']; ?>">
                 <div class="row mb-4 align-items-center text-center">
                     <!-- Colonne pour l'image -->
                     <div class="col-md-6 d-flex justify-content-center">

@@ -17,18 +17,19 @@ else $ordre = null;
 
 $listeEtapes = $user->getListeEtapes($filtre, $ordre);
 
-$donnees['listeEtapes'] = $listeEtapes;
+if($listeEtapes){
+    $donnees['listeEtapes'] = $listeEtapes;
+    $donnees['status'] = "OK";
+}
 
-if(count($listeEtapes) >0) $donnees['status'] = "OK";
 else $donnees['status'] = "Aucune etape trouvée";
 
-// encodage au format JSON 
-$donneesJson = json_encode($donnees, JSON_HEX_APOS);
+// Encodage de la réponse en JSON et affichage
+header('Content-Type: application/json');
 
-// remplacement des \\n qui peuvent causer des erreurs en JavaScript 
+$donneesJson = json_encode($donnees, JSON_HEX_APOS | JSON_UNESCAPED_UNICODE);
 $donneesJson = str_replace("\\n", " ", $donneesJson);
-
-// on écrit les données 
 echo $donneesJson;
+
 
 ?>

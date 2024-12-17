@@ -7,17 +7,24 @@
  *
  * @param string $info : liste des champs que l'on souhaite récupérer
  * @param string $table : nom de la table dans laquelle l'on souhaite récupérer les informations
- * @param string|null $filtre : filtre pour la requête (exemple :"id_artiste = 1")
- * @param string|null $trier : champ par lequel on souhaite trier les résultats (exemple : "nom DESC")
  * @param string $type_fetch : type de fetch ("fetchAll" pour récupérer tout, "fetch" pour récupérer un seul résultat)
+ * @param string|null $filtre : filtre pour la requête (exemple :"id_etape = 1")
+ * @param string|null $trier : champ par lequel on souhaite trier les résultats (exemple : "nom DESC")
+ * @param array|null $join : tableaux contenant les jointures (exemple : [['tableBase'=>'etapes', 'tableToJoin' => 'participe', 'lien' => 'id_etape']])
+ * 
  *
  * @return array : tableau contenant les résultats de la requête
  */
-function obtenirDonnees($info, $table, $type_fetch = 'fetch', $filtre = null, $trier = null)
+function obtenirDonnees($info, $table, $type_fetch = 'fetch', $filtre = null, $trier = null, $join = null)
 {
     global $bdd;
     try {
         $requete = 'SELECT ' . $info . ' FROM ' . $table;
+        if($join){
+            foreach($join as $focus){
+                $requete .= ' JOIN ' . $focus['tableToJoin'] . ' ON ' . $focus['tableBase'] . '.' . $focus['lien'] . ' = ' . $focus['tableToJoin'] . '.' . $focus['lien'];
+            }
+        }
         // Ajouter le filtre à la requête si défini
         if ($filtre) {
             $requete .= ' WHERE ' . $filtre;
@@ -67,7 +74,7 @@ function metadata()
  */
 function isUserLoggedIn(){
     startSession();
-    if (isset($_SESSION['compte'])) return $_SESSION['compte'];
+    if (isset($_SESSION['compte']) && $_SESSION['compte'] instanceof Users) return $_SESSION['compte'];
     return false;
 }
 

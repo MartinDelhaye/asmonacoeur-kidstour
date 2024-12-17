@@ -43,62 +43,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evenements</title>
+    <title>Etape</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 <?php include 'Composant/Header.php'; ?>
 
-<section class="contenuEtape">
-    <div class="container">
-        <div class="row text-center">
-            <div class="nomEtape text-danger">
-                <h1><?php echo $tabInfoEtape["nom_etape"];?></h1>
-            </div>
-            <div>
-                <?php echo $tabInfoEtape["image_etape"];?>
-            </div>
+<div class="container"> 
+    <div class="text-center">
+        <h1 class="fw-bold titre1 invite1"><?php echo $tabInfoEtape["nom_etape"]; ?></h1>
+        <img src="<?php echo $tabInfoEtape["image_etape"]; ?>" alt="Enfant Jouant" class="img-fluid event-image">
+    </div>
+</div>
+
+<div class="container"> 
+    <div class="section-details text-start mt-3">
+        <p><span>Organisateur :</span>
+            <?php foreach ($tabOrganisateur as $organisateur) {
+                echo $organisateur["nom_user"] . " " . $organisateur["prenom_user"] . ", ";
+            } ?>
+        </p>
+        <p><span>Invités :</span>
+            <?php foreach ($tabInvites as $invite) {
+                echo "<a href='#' class='invite1 fw-bold'>" . $invite["nom_invite"] . " " . $invite["prenom_invite"] . "</a> ";
+            } ?>
+        </p>
+        <p><span>Horaire :</span> <?php echo $tabInfoEtape["heure_etape"]; ?></p>
+    </div>
+</div>
+
+<div class="container"> 
+    <div class="row align-items-center my-4">
+        <div class="col-md-6 text-center">
+            <img src="<?php echo $tabInfoEtape["illustration_etape"]; ?>" alt="Illustration Kids Tour" class="img-fluid illustration-image">
         </div>
-        <div>
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="row">
-                        <p><span>Organisateur :</span> <?php  
-                            foreach($tabOrganisateur as $organisateur){
-                            echo $organisateur["nom_user"]." ". $organisateur["prenom_user"];
-                            }
-                        ?> </p>
-                    </div>
-                    <div class="row">
-                        <p><span>Invités :</span> <?php  
-                            foreach($tabInvites as $invite){
-                                echo "<a href=''> ". $invite["nom_invite"]." ". $invite["prenom_invite"]."</a> ";
-                            }
-                        ?> </p>
-                    </div>
-                    <div class="row">
-                        <p><span>Horaire :</span> <?php echo $tabInfoEtape["heure_etape"];?></p>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-6 section-description">
+            <p><?php echo $tabInfoEtape["description_etape"]; ?></p>
         </div>
     </div>
-    <div class="container text-center">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <?php echo $tabInfoEtape["illustration_etape"];?>
-            </div>
-            <div class="col-md-6">
-                <p><?php echo $tabInfoEtape["description_etape"];?></p>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-
-
+</div>
 
 
 <!-- Carousel Images à changer-->
@@ -130,7 +114,6 @@
     </div>
 </div>
 
-
-
+<?php include 'Composant/Footer.php'; ?>
 </body>
 </html>

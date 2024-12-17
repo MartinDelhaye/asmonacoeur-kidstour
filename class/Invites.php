@@ -19,7 +19,7 @@ class Invites {
     }
 
     // Méthode statique pour récupérer les invités
-    public static function getListeInvite(): array {
+    public static function getListeInvites(): array {
         try {
             return obtenirDonnees("*", "invites", 'fetchAll');
         } catch (PDOException $e) {

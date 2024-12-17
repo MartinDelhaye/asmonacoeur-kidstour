@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 16 déc. 2024 à 09:18
+-- Généré le : mar. 17 déc. 2024 à 09:41
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -58,15 +58,15 @@ CREATE TABLE `etapes` (
   `description_etape` text NOT NULL,
   `illustration_etape` varchar(255) NOT NULL,
   `image_etape` varchar(255) NOT NULL,
-  `ville` varchar(100) NOT NULL,
-  `heure` varchar(50) NOT NULL
+  `ville_etape` varchar(100) NOT NULL,
+  `heure_etape` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `etapes`
 --
 
-INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `description_etape`, `illustration_etape`, `image_etape`, `ville`, `heure`) VALUES
+INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `description_etape`, `illustration_etape`, `image_etape`, `ville_etape`, `heure_etape`) VALUES
 (1, '2023-11-03', '2 Pl. de la République, 83440 Fayence', 'Le Kids Tour et Aleksandr Golovin à Fayence ce vendredi !', '\"Rendez-vous à la mairie.\r\nPour cette étape de l’AS Monaco Kids tour, la journée s’annonce riche en activités : \r\nRencontre avec notre mascotte Bouba et un invité surprise\r\nCible géante gonflable\r\nQuiz sur l’AS Monaco\r\nImmersion du Stade Louis-II grâce à des casques RV\r\nParties de FC 24 sur Playstation 5\r\nEt de belles surprises, telles qu’un maillot dédicacé de notre invité et des invitations pour des matchs sont à gagner ! Tout comme les goodies offerts, c’est une journée à ne pas manquer!\"', 'images/Temp_kidstour_Complet.jpg', 'images/Temp_kidstour_img_enfant1.jpg', 'Fayence', '13h30 - 17h30'),
 (2, '2023-11-17', '62 Av. du Trois Septembre, 06320 Cap-d\'Ail', 'Cap-d’Ail en mode Kids Tour !', '\"Rendez-vous à la mairie.\r\nPour cette étape de l’AS Monaco Kids tour, cette journée ensoleillée annonce pleins de surprises : \r\nRencontre avec notre mascotte et des invités surprises\r\nEntraînement de football\r\nQuiz sur l’AS Monaco\r\nParties de FC24 sur Playstation 5\r\nC’est aussi l’occasion de se mettre à l’épreuve lors d’un tire au but, les joueurs les plus précis auront le droit de repartir avec de belles surprises !\"', 'images/Temp_kidstour_Cap_dAil.jpg', 'images/Temp_kidstour_img_enfant2.jpg', 'Cap-d’Ail', '13h30 - 17h30'),
 (3, '2023-11-24', '1 Av. de la Victoire, 06320 La Turbie', 'Le Kids Tour à La Turbie vendredi 24 novembre !', '\"Rendez-vous sur la place de la mairie.\r\nPour cette étape notre équipe vous propose plusieurs divertissements : \r\nRencontre avec notre fidèle mascotte Bouba\r\nEntraînement de foot avec des joueurs de Monaco\r\nQuiz sur l’AS Monaco\r\nCréation de décoration de Noël\r\nLa caravane rouge et blanche sera toujours remplie de pleins de goodies à vous offrir, une autre journée à ne pas louper !\"', 'images/Temp_kidstour_LaTurbine.jpg', 'images/Temp_kidstour_img_enfant3.jpg', 'La Turbie', '13h30 - 17h30'),
@@ -81,8 +81,8 @@ INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `desc
 
 CREATE TABLE `invites` (
   `id_invite` int(11) NOT NULL,
-  `nom__invite` varchar(50) NOT NULL,
-  `prenom__invite` varchar(50) NOT NULL,
+  `nom_invite` varchar(50) NOT NULL,
+  `prenom_invite` varchar(50) NOT NULL,
   `description_invite` varchar(1000) NOT NULL,
   `contact_invite` varchar(255) NOT NULL,
   `image_invite` varchar(255) NOT NULL
@@ -92,7 +92,7 @@ CREATE TABLE `invites` (
 -- Déchargement des données de la table `invites`
 --
 
-INSERT INTO `invites` (`id_invite`, `nom__invite`, `prenom__invite`, `description_invite`, `contact_invite`, `image_invite`) VALUES
+INSERT INTO `invites` (`id_invite`, `nom_invite`, `prenom_invite`, `description_invite`, `contact_invite`, `image_invite`) VALUES
 (1, 'Balogun', 'Folarin', 'Folarin Balogun est un jeune footballeur talentueux né le 3 juillet 2001 à New York, aux États-Unis. Il joue comme attaquant et est connu pour sa vitesse et ses nombreux buts. Balogun a grandi en Angleterre et a joué pour Arsenal avant de rejoindre l’AS Monaco en France. Il représente l’équipe nationale des États-Unis et est un espoir prometteur dans le monde du football. Avec son énergie et son talent, il inspire de nombreux jeunes à suivre leurs rêves dans le sport.', 'téléphone : 06 12 34 56 78', 'images/Folarin_Balogun.jpg'),
 (2, 'Golovin', 'Aleksandr', 'Aleksandr Golovin est un footballeur russe né le 30 mai 1996 à Kaltan, en Russie. Il joue au milieu de terrain et est connu pour sa technique, sa vision de jeu et ses passes précises. Golovin a commencé sa carrière en Russie avant de rejoindre l’AS Monaco, un club de Ligue 1 en France. Il a également représenté l’équipe nationale de Russie dans plusieurs compétitions internationales. Son travail acharné et son style de jeu créatif en font un joueur très apprécié des fans de football.', 'téléphone : 07 98 76 54 32', 'images/Aleksandr_Golovin.jpg'),
 (3, 'Minamino', 'Takumi', 'Takumi Minamino est un footballeur japonais né le 16 janvier 1995 à Izumisano, au Japon. Il joue comme attaquant ou milieu offensif et est connu pour sa rapidité, sa technique et son intelligence sur le terrain. Minamino a joué pour des clubs célèbres comme le Red Bull Salzburg et Liverpool avant de rejoindre l’AS Monaco en France. Il représente également l’équipe nationale du Japon, où il est un joueur clé. Avec son talent et son travail acharné, il est un modèle pour les jeunes passionnés de football.', 'téléphone : 01 23 45 67 89', 'images/Takumi_Minamino.jpg'),

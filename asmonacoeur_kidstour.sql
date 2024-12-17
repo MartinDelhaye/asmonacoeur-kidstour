@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 16 déc. 2024 à 10:30
+-- Généré le : mar. 17 déc. 2024 à 09:41
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -81,8 +81,8 @@ INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `desc
 
 CREATE TABLE `invites` (
   `id_invite` int(11) NOT NULL,
-  `nom__invite` varchar(50) NOT NULL,
-  `prenom__invite` varchar(50) NOT NULL,
+  `nom_invite` varchar(50) NOT NULL,
+  `prenom_invite` varchar(50) NOT NULL,
   `description_invite` varchar(1000) NOT NULL,
   `contact_invite` varchar(255) NOT NULL,
   `image_invite` varchar(255) NOT NULL
@@ -92,7 +92,7 @@ CREATE TABLE `invites` (
 -- Déchargement des données de la table `invites`
 --
 
-INSERT INTO `invites` (`id_invite`, `nom__invite`, `prenom__invite`, `description_invite`, `contact_invite`, `image_invite`) VALUES
+INSERT INTO `invites` (`id_invite`, `nom_invite`, `prenom_invite`, `description_invite`, `contact_invite`, `image_invite`) VALUES
 (1, 'Balogun', 'Folarin', 'Folarin Balogun est un jeune footballeur talentueux né le 3 juillet 2001 à New York, aux États-Unis. Il joue comme attaquant et est connu pour sa vitesse et ses nombreux buts. Balogun a grandi en Angleterre et a joué pour Arsenal avant de rejoindre l’AS Monaco en France. Il représente l’équipe nationale des États-Unis et est un espoir prometteur dans le monde du football. Avec son énergie et son talent, il inspire de nombreux jeunes à suivre leurs rêves dans le sport.', 'téléphone : 06 12 34 56 78', 'images/Folarin_Balogun.jpg'),
 (2, 'Golovin', 'Aleksandr', 'Aleksandr Golovin est un footballeur russe né le 30 mai 1996 à Kaltan, en Russie. Il joue au milieu de terrain et est connu pour sa technique, sa vision de jeu et ses passes précises. Golovin a commencé sa carrière en Russie avant de rejoindre l’AS Monaco, un club de Ligue 1 en France. Il a également représenté l’équipe nationale de Russie dans plusieurs compétitions internationales. Son travail acharné et son style de jeu créatif en font un joueur très apprécié des fans de football.', 'téléphone : 07 98 76 54 32', 'images/Aleksandr_Golovin.jpg'),
 (3, 'Minamino', 'Takumi', 'Takumi Minamino est un footballeur japonais né le 16 janvier 1995 à Izumisano, au Japon. Il joue comme attaquant ou milieu offensif et est connu pour sa rapidité, sa technique et son intelligence sur le terrain. Minamino a joué pour des clubs célèbres comme le Red Bull Salzburg et Liverpool avant de rejoindre l’AS Monaco en France. Il représente également l’équipe nationale du Japon, où il est un joueur clé. Avec son talent et son travail acharné, il est un modèle pour les jeunes passionnés de football.', 'téléphone : 01 23 45 67 89', 'images/Takumi_Minamino.jpg'),

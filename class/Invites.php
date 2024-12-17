@@ -1,6 +1,6 @@
 <?php
 
-class Invite {
+class Invites {
 
     private $id_invite;
     private $nom_invite;
@@ -19,7 +19,7 @@ class Invite {
     }
 
     // Méthode statique pour récupérer les invités
-    public static function getListeInvite(): array {
+    public static function getListeInvites(): array {
         try {
             return obtenirDonnees("*", "invites", 'fetchAll');
         } catch (PDOException $e) {

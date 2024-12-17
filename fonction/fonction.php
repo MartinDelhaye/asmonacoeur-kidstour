@@ -20,8 +20,8 @@ function obtenirDonnees($info, $table, $type_fetch = 'fetch', $filtre = null, $t
     global $bdd;
     try {
         $requete = 'SELECT ' . $info . ' FROM ' . $table;
-        if($join){
-            foreach($join as $focus){
+        if ($join) {
+            foreach ($join as $focus) {
                 $requete .= ' JOIN ' . $focus['tableToJoin'] . ' ON ' . $focus['tableBase'] . '.' . $focus['lien'] . ' = ' . $focus['tableToJoin'] . '.' . $focus['lien'];
             }
         }
@@ -59,6 +59,9 @@ function metadata()
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="CSS/style.css">
+
+	    <script src="JS/mustache.min.js"></script>
+        <script src="JS/script.js"></script>
         
     ';
 }
@@ -71,11 +74,13 @@ function metadata()
  *
  * Retourne les informations de l'utilisateur si connecté, FALSE sinon.
  *
- * @return array|false : informations de l'utilisateur connecté ou FALSE
+ * @return Users|false : informations de l'utilisateur connecté ou FALSE
  */
-function isUserLoggedIn(){
+function isUserLoggedIn()
+{
     startSession();
-    if (isset($_SESSION['compte']) && $_SESSION['compte'] instanceof Users) return $_SESSION['compte'];
+    if (isset($_SESSION['compte']) && $_SESSION['compte'] instanceof Users)
+        return $_SESSION['compte'];
     return false;
 }
 

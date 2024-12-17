@@ -26,7 +26,7 @@
               <a class="nav-link" href="etapes.php">Évènement</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Invités</a>
+              <a class="nav-link" href="invites.php">Invités</a>
 
             </li>
             <form class="d-flex mt-3" role="search">

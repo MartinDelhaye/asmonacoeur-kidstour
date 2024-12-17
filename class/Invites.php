@@ -1,6 +1,6 @@
 <?php
 
-class Invite {
+class Invites {
 
     private $id_invite;
     private $nom_invite;

@@ -18,7 +18,7 @@
 
     <?php
     // Récupération des invités depuis la base de données
-    $tab = Invite::getListeInvite(); // Méthode qui retourne un tableau d'invités
+    $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invités
     ?>
 
     <div class="container">

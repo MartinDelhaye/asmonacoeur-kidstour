@@ -10,15 +10,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invités</title>
+    <title>Etapes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <?php include('Composant/Header.php'); ?>
 
     <?php
+
+    //echo 
     // Récupération des invités depuis la base de données
-    $tab = Etape::getListeEtape(); // Méthode qui retourne un tableau d'étapes
+    $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
     ?>
 
     <div class="container">

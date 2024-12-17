@@ -2,7 +2,7 @@
     include_once('config/config.php');
     include_once('fonction/fonction.php');
     include_once('class/Users.php');
-    include_once('class/Etapes.php');
+    include_once('class/Invites.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,24 +18,23 @@
 
     <?php
     // Récupération des invités depuis la base de données
-    $tab = Etape::getListeEtape(); // Méthode qui retourne un tableau d'étapes
+    $tab = Invite::getListeInvite(); // Méthode qui retourne un tableau d'invités
     ?>
 
     <div class="container">
-        <?php foreach ($tab as $etape): ?>
-            <a href="Etapes.php?id_etape=<?php echo $etape['id_etape']; ?>">
+        <?php foreach ($tab as $invite): ?>
+            <a href="Invites.php?id_invite=<?php echo $invite['id_invite']; ?>">
                 <div class="row mb-4 align-items-center text-center">
                     <!-- Colonne pour l'image -->
                     <div class="col-md-6 d-flex justify-content-center">
-                        <img src="<?php echo $etape['image_etape']; ?>" class="img-fluid" alt="Image étape">
+                        <img src="<?php echo $invite['image_invite']; ?>" class="img-fluid" alt="Image invité">
                     </div>
                     <!-- Colonne pour les informations -->
                     <div class="col-md-6 d-flex flex-column justify-content-center">
-                        <h5 class="fw-bold"><?php echo $etape['nom_etape']?></h5>
+                        <h5 class="fw-bold"><?php echo $invite['nom_invite'] . " " . $invite['prenom_invite']; ?></h5>
                         <p>
-                            <?php echo $etape['date_etape']; ?><br>
-                            <?php echo $etape['lieu_etape']; ?><br>
-                            <?php echo $etape['description_etape']; ?><br>
+                            <?php echo $invite['description_invite']; ?><br>
+                            <?php echo $invite['contact_invite']; ?>
                         </p>
                     </div>
                 </div>

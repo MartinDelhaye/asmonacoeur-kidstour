@@ -44,8 +44,8 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login'])) {
 
 
 // Deconnexion (temporaire)
-// $_SESSION['compte']->deconnexion();
-// header('Location: connexion.php');
+//$_SESSION['compte']->deconnexion();
+//header('Location: connexion.php');
 
 ?>
 <!DOCTYPE html>

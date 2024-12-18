@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class_name) {
-    include $class_name . '.php';
+    include_once $class_name . '.php';
 });
 
 class Users
@@ -121,13 +121,12 @@ class Users
         } else
             return "Erreur : Type Utilisateur incorrect";
 
-        // Détermine les filtres et ordre
+        // Détermine les filtres 
         $filtreRequete = "users.id_user = " . $this->getIdUser();
         if ($filtre)
             $filtreRequete .= " AND $filtre";
 
         $etapesUsers = obtenirDonnees(
-
             'etapes.id_etape, etapes.date_etape, etapes.lieu_etape, etapes.nom_etape, etapes.illustration_etape' . $infoSup,
             'etapes',
             'fetchAll',
@@ -138,10 +137,8 @@ class Users
                 ['tableBase' => $tableJOIN, 'tableToJoin' => 'users', 'lien' => 'id_user']
             ]
         );
-        if ($etapesUsers) {
-            return $etapesUsers;
-        }
-        return false;
+        if ($etapesUsers) return $etapesUsers;
+        return "Aucune étape trouvée";
     }
 }
 

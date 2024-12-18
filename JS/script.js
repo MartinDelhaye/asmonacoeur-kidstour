@@ -70,11 +70,11 @@ function afficherListe() {
 
             // Créer un tableau pour stocker le rendu des étapes
             let renderedContent = '';
-            response.listeEtapes.forEach(etape => {
+            response.liste.forEach(focus => {
                 let idTemplate = listeInfo.dataset.template;
                 console.log(idTemplate);
                 const template = document.getElementById(idTemplate).innerHTML;
-                renderedContent += Mustache.render(template, etape); // Ajout de chaque étape au contenu
+                renderedContent += Mustache.render(template, focus); // Ajout de chaque étape au contenu
             });
 
             // Insérer tout le contenu généré dans la zone de rendu

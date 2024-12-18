@@ -8,10 +8,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <?php echo metadata();?>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invités</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="keywords" content="Liste des invités">
+    <meta name="description" content="Liste des invités présents lors du Kids Tour AS Monacoeur">
+    <title>Etapes</title>
 </head>
 <body>
     <?php include('Composant/Header.php'); ?>

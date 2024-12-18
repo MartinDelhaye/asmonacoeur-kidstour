@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'AS Monaco Diagonale';
+    src: url('ASMonacoDiagonale-Bold.eot');
+    src: local('AS Monaco Diagonale Bold'), local('ASMonacoDiagonale-Bold'),
+        url('ASMonacoDiagonale-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ASMonacoDiagonale-Bold.woff2') format('woff2'),
+        url('ASMonacoDiagonale-Bold.woff') format('woff'),
+        url('ASMonacoDiagonale-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

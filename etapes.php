@@ -21,6 +21,7 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
 <body>
     <?php include('Composant/Header.php'); ?>
     <main>
+    <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les étapes</h1>
         <div class="container">
             <?php foreach ($tab as $etape): ?>
                 <a href="etape.php?id_etape=<?php echo $etape['id_etape']; ?>"> </a>

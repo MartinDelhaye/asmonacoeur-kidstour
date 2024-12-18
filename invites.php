@@ -21,6 +21,7 @@ $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invité
 <body>
     <?php include('Composant/Header.php'); ?>
     <main>
+    <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les invités</h1>
         <div class="container">
             <?php foreach ($tab as $invite): ?>
                 <a href="invite.php?id_invite=<?php echo $invite['id_invite']; ?>"></a>

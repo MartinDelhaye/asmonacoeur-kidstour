@@ -23,7 +23,7 @@
               <a class="nav-link" href="connexion.php">Connexion <img src="images/icone.png" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="etapes.php">Évènement</a>
+              <a class="nav-link" href="etapes.php">Étapes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="invites.php">Invités</a>

@@ -1,9 +1,12 @@
 <?php
+include_once('config/config.php');
 include_once('fonction/fonction.php');
+include_once('class/Users.php');
+
 
 isUserLoggedIn();
 if(isset($_SESSION['compte'])) header('Location: compte.php');
-
+// print_r($_POST);
 if (isset($_POST['login']) && !isset($_POST['nom'])) {
     $login = $_POST['login'];
     $mdp = $_POST['mdp'];
@@ -53,12 +56,16 @@ if (isset($message_erreur))
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-
-<!-- Header -->
-<div class="monaco-header">
-
-</div>
-
+<p>
+        Test : (admin)<br>
+        Login : delhayemar1@gmail.com <br>
+        Mdp : 123
+</p>
+<p>
+        Test : (participant)<br>
+        Login : mathieu.dupont@example.com <br>
+        Mdp : 123
+</p>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -72,7 +79,7 @@ if (isset($message_erreur))
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label class="form-label">Nom d'utilisateur
-                            <input type="text" name="utilisateur" class="form-control" placeholder="Nom d'utilisateur" required>
+                            <input type="text" name="login" class="form-control" placeholder="Nom d'utilisateur" required>
                             </label>
                         </div>
                         <div class="mb-3">

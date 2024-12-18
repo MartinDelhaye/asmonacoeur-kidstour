@@ -3,7 +3,6 @@ include_once('config/config.php');
 include_once('fonction/fonction.php');
 include_once('class/Users.php');
 
-
 isUserLoggedIn();
 if(isset($_SESSION['compte'])) header('Location: compte.php');
 // print_r($_POST);
@@ -42,31 +41,21 @@ if (isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['nom'])) {
     }
 }
 
-if (isset($message_erreur))
-    echo $message_erreur;
+//if (isset($message_erreur))
+    //echo $message_erreur;
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo metadata(); ?>
+    <meta name="keywords" content="">
+    <meta name="description" content="" />
     <title>Connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<p>
-        Test : (admin)<br>
-        Login : delhayemar1@gmail.com <br>
-        Mdp : 123
-</p>
-<p>
-        Test : (participant)<br>
-        Login : mathieu.dupont@example.com <br>
-        Mdp : 123
-</p>
-
+<?php include('Composant/Header.php'); ?>
+<main>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -76,10 +65,13 @@ if (isset($message_erreur))
                     Connexion
                 </div>
                 <div class="card-body">
+                <?php if (!empty($message_erreur)): ?>
+                        <div class="alert alert-danger"><?php echo $message_erreur; ?></div>
+                    <?php endif; ?>
                     <form action="" method="POST">
                         <div class="mb-3">
-                            <label class="form-label">Nom d'utilisateur
-                            <input type="text" name="login" class="form-control" placeholder="Nom d'utilisateur" required>
+                            <label class="form-label">Email
+                            <input type="text" name="login" class="form-control" placeholder="Email" required>
                             </label>
                         </div>
                         <div class="mb-3">
@@ -105,8 +97,8 @@ if (isset($message_erreur))
                 <div class="card-body">
                     <form action="" method="POST">
                         <div class="mb-3">
-                            <label for="login" class="form-label">Nom d'utilisateur</label>
-                            <input type="text" name="login" class="form-control" placeholder="Nom d'utilisateur" required>
+                            <label for="login" class="form-label">Email</label>
+                            <input type="text" name="login" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="mb-3">
                             <label for="mdp" class="form-label">Mot de passe</label>
@@ -135,7 +127,7 @@ if (isset($message_erreur))
     </div>
 </div>
 
-
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -146,6 +138,9 @@ if (isset($message_erreur))
         inscriptionForm.style.display = (inscriptionForm.style.display === "none") ? "block" : "none";
     }
 </script>
-
+<?php
+    include 'Composant/scrollTopBtn.php';
+    include 'Composant/Footer.php';
+    ?>
 </body>
 </html>

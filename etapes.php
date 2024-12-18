@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <?php echo metadata();?>
+    <meta name="keywords" content="Liste des étapes">
+    <meta name="description" content="Liste des étapes du parcours du Kids Tour AS Monacoeur">
     <title>Etapes</title>
 </head>
 <body>

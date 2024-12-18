@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 17 déc. 2024 à 09:41
+-- Généré le : mer. 18 déc. 2024 à 15:17
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -42,7 +42,17 @@ INSERT INTO `anime` (`id_anime`, `id_invite`, `id_etape`) VALUES
 (2, 2, 1),
 (3, 3, 5),
 (4, 4, 2),
-(5, 5, 3);
+(5, 5, 3),
+(6, 3, 4),
+(7, 4, 4),
+(8, 5, 1),
+(9, 1, 1),
+(10, 2, 5),
+(11, 4, 5),
+(12, 1, 2),
+(13, 5, 2),
+(14, 2, 3),
+(15, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -120,7 +130,27 @@ INSERT INTO `organise` (`id_organise`, `id_user`, `id_etape`) VALUES
 (2, 2, 3),
 (3, 3, 2),
 (4, 4, 1),
-(5, 5, 4);
+(5, 5, 4),
+(6, 1, 1),
+(7, 1, 2),
+(8, 1, 3),
+(9, 1, 4),
+(10, 2, 1),
+(11, 2, 2),
+(12, 2, 4),
+(13, 2, 5),
+(14, 3, 1),
+(15, 3, 3),
+(16, 3, 4),
+(17, 3, 5),
+(18, 4, 2),
+(19, 4, 3),
+(20, 4, 4),
+(21, 4, 5),
+(22, 5, 1),
+(23, 5, 2),
+(24, 5, 3),
+(25, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -144,7 +174,12 @@ INSERT INTO `participe` (`id_participe`, `id_user`, `id_etape`, `nbr_enfant_part
 (2, 7, 5, 3),
 (3, 8, 2, 1),
 (4, 9, 1, 2),
-(5, 10, 4, 3);
+(5, 10, 4, 3),
+(6, 6, 5, 2),
+(7, 7, 2, 3),
+(8, 8, 1, 1),
+(9, 9, 4, 2),
+(10, 10, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -231,7 +266,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `anime`
 --
 ALTER TABLE `anime`
-  MODIFY `id_anime` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_anime` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `invites`
@@ -243,13 +278,13 @@ ALTER TABLE `invites`
 -- AUTO_INCREMENT pour la table `organise`
 --
 ALTER TABLE `organise`
-  MODIFY `id_organise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_organise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `participe`
 --
 ALTER TABLE `participe`
-  MODIFY `id_participe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_participe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `users`

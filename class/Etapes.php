@@ -1,6 +1,7 @@
 <?php
-// Déclaration de la classe Etapes
-class Etapes {
+// Déclaration de la classe Etape
+class Etapes
+{
     private $id_etape;
     private $date_etape;
     private $nom;
@@ -11,11 +12,10 @@ class Etapes {
     private $nombre_membres;
     private $liste_invite;
 
-    // Constructeur
-    public function __construct($date_etape, $nom, $description_etape, $lieu_etape, $illustration_etape, $image_etape, $nombre_membres, $liste_invite) {
+    function __construct($date_etape, $nom, $description_etape, $lieu_etape, $illustration_etape, $image_etape, $nombre_membres, $liste_invite)
+    {
         $this->date_etape = $date_etape;
-        $this->nom = $nom;  
-        $this->description_etape = $description_etape;
+        $this->nom = $nom;
         $this->lieu_etape = $lieu_etape;
         $this->illustration_etape = $illustration_etape;
         $this->image_etape = $image_etape;
@@ -32,5 +32,3 @@ class Etapes {
         }
     }
 }
-?>
-

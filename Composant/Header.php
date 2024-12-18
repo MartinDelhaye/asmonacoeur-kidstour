@@ -1,7 +1,7 @@
 <!-- Header -->
 <header>
   <nav class="navbar" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid">
+    <div class="container-fluid text-center">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
         aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,10 +23,10 @@
               <a class="nav-link" href="connexion.php">Connexion <img src="images/icone.png" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Évènement</a>
+              <a class="nav-link" href="etapes.php">Évènement</a>
             </li>
             <li class="nav-item">
-              <a href=""></a>
+              <a class="nav-link" href="invites.php">Invités</a>
 
             </li>
             <form class="d-flex mt-3" role="search">

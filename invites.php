@@ -8,10 +8,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php echo metadata();?>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="Liste des invités">
-    <meta name="description" content="Liste des invités présents lors du Kids Tour AS Monacoeur">
     <title>Etapes</title>
 </head>
 <body>

@@ -23,7 +23,7 @@ $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invité
     <main>
         <div class="container">
             <?php foreach ($tab as $invite): ?>
-                <a href="invite.php?id_invite=<?php echo $invite['id_invite']; ?>">
+                <a href="invite.php?id_invite=<?php echo $invite['id_invite']; ?>"></a>
                     <div class="row mb-4 align-items-center text-center">
                         <!-- Colonne pour l'image -->
                         <div class="col-md-6 d-flex justify-content-center">
@@ -31,14 +31,14 @@ $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invité
                         </div>
                         <!-- Colonne pour les informations -->
                         <div class="col-md-6 d-flex flex-column justify-content-center">
-                            <h5 class="fw-bold"><?php echo $invite['nom_invite'] . " " . $invite['prenom_invite']; ?></h5>
+                            <h5 class="text-danger fw-bold"><?php echo $invite['nom_invite'] . " " . $invite['prenom_invite']; ?></h5>
                             <p>
                                 <?php echo $invite['description_invite']; ?><br>
-                                <?php echo $invite['contact_invite']; ?>
+                                <div class="fst-italic"><?php echo $invite['contact_invite']; ?></div>
                             </p>
                         </div>
                     </div>
-                </a>
+                
             <?php endforeach; ?>
         </div>
     </main>

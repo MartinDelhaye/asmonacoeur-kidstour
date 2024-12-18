@@ -22,13 +22,23 @@ class Etapes
         $this->nombre_membres = $nombre_membres;
         $this->liste_invite = $liste_invite;
     }
-
-    // Méthode statique pour récupérer les étapes
-    public static function getListeEtapes(): array {
-        try {
-            return obtenirDonnees("*", "etapes", 'fetchAll');
-        } catch (PDOException $e) {
-            die("Erreur lors de la récupération des étapes : " . $e->getMessage());
-        }
+ /**
+     * Méthode statique pour récupérer les invités
+     *
+     * @param string|null $filtre Filtre pour la requête (exemple :"id_etape = 1")
+     * @param string|null $ordre Champ par lequel on souhaite trier les résultats (exemple : "nom DESC")
+     *
+     * @return array|string Tableau contenant les résultats de la requête ou message d'erreur
+     */
+    public static function getListeEtapes($filtre = null, $ordre = null) {
+        $etapesUsers = obtenirDonnees(
+            '*',
+            'etapes',
+            'fetchAll',
+            $filtre,
+            $ordre
+        );
+        if ($etapesUsers) return $etapesUsers;
+        return "Aucune étape trouvée";
     }
 }

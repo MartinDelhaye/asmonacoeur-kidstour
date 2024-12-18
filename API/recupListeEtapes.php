@@ -3,7 +3,7 @@
 include_once('../config/config.php');
 include_once('../fonction/fonction.php');
 include_once('../class/Users.php');
-include_once('../class/Invites.php');
+include_once('../class/Etapes.php');
 
 $donnees = array();
 
@@ -13,13 +13,13 @@ else $filtre = null;
 if(isset($_GET["ordre"])) $ordre = $_GET["ordre"];
 else $ordre = null;
 
-$listeInvites = Invites::getListeInvites($filtre, $ordre);
+$listeEtapes = Etapes::getListeEtapes($filtre, $ordre);
 
-if(gettype($listeInvites) == "array") {
+if(gettype($listeEtapes) == "array") {
     $donnees['status'] = "OK";
-    $donnees['liste'] = $listeInvites;
+    $donnees['liste'] = $listeEtapes;
 }
-else $donnees['status'] = $listeInvites;
+else $donnees['status'] = $listeEtapes;
 
 // Encodage de la réponse en JSON et affichage
 header('Content-Type: application/json');

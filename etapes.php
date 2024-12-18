@@ -23,7 +23,7 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
     <main>
         <div class="container">
             <?php foreach ($tab as $etape): ?>
-                <a href="etape.php?id_etape=<?php echo $etape['id_etape']; ?>">
+                <a href="etape.php?id_etape=<?php echo $etape['id_etape']; ?>"> </a>
                     <div class="row mb-4 align-items-center text-center">
                         <!-- Colonne pour l'image -->
                         <div class="col-md-6 d-flex justify-content-center">
@@ -31,15 +31,15 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
                         </div>
                         <!-- Colonne pour les informations -->
                         <div class="col-md-6 d-flex flex-column justify-content-center">
-                            <h5 class="fw-bold"><?php echo $etape['nom_etape'] ?></h5>
+                            <h5 class="text-danger fw-bold"><?php echo $etape['nom_etape'] ?></h5>
                             <p>
-                                <?php echo $etape['date_etape']; ?><br>
-                                <?php echo $etape['lieu_etape']; ?><br>
+                               <div class="fst-italic"> <?php echo $etape['date_etape']; ?><br>
+                                <?php echo $etape['lieu_etape']; ?><br> </div>
                                 <?php echo $etape['description_etape']; ?><br>
                             </p>
                         </div>
                     </div>
-                </a>
+               
             <?php endforeach; ?>
         </div>
     </main>

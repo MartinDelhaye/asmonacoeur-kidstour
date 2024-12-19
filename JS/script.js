@@ -21,7 +21,8 @@ function viderDiv(div) {
 }
 
 /**
- * Affiche une liste en appellant une requête AJAX vers une API
+ * Affiche une liste en appelant une requête AJAX vers une API pour un formulaire spécifique
+ * @param {HTMLDivElement} formContainer 
  */
 function afficherListe() {
 
@@ -80,7 +81,7 @@ function afficherListe() {
 
             // Insérer tout le contenu généré dans la zone 
             listeInfo.innerHTML = renderedContent;
-        }
+        }        
     };
     xhttp.send();
 }
@@ -115,9 +116,12 @@ function init() {
 
         // Afficher les étapes au chargement initial
         afficherListe();
-    }
+    } 
+
+
+
 }
 
 // Attendre que le DOM soit prêt
-window.addEventListener('load', init);
+window.addEventListener('DOMContentLoaded', init);
 

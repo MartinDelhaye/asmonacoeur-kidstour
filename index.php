@@ -1,8 +1,9 @@
 <?php
 include_once('fonction/fonction.php');
-
+include_once('class/Users.php');
 
 if(isUserLoggedIn()) $user = $_SESSION['compte'];
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

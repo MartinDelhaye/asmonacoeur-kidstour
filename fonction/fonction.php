@@ -74,14 +74,12 @@ function metadata()
  *
  * Retourne les informations de l'utilisateur si connecté, FALSE sinon.
  *
- * @return Users|false : informations de l'utilisateur connecté ou FALSE
+ * @return true|false : informations de l'utilisateur connecté ou FALSE
  */
 function isUserLoggedIn()
 {
     startSession();
-    if (isset($_SESSION['compte']) && $_SESSION['compte'] instanceof Users)
-        return $_SESSION['compte'];
-    return false;
+    return isset($_SESSION['compte']) && $_SESSION['compte'] instanceof Users;
 }
 
 /**

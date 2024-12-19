@@ -136,6 +136,7 @@ h1{
     color: #fff;
 }
 
+
 /* Page de l'etape */ 
 
 body {
@@ -146,6 +147,7 @@ body {
     font-size: 2.5rem;
     color: #bf2a38; 
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .invite1 {
@@ -156,6 +158,10 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     text-transform: uppercase;
+}
+.lienInvite{
+    font-weight: bold;
+    color: #bf2a38;
 }
 
 .section-details p {
@@ -194,4 +200,3 @@ body {
     background-color: #bf2a38;
     border-radius: 50%;
 }
-

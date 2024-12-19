@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : jeu. 19 déc. 2024 à 15:34
+-- Généré le : jeu. 19 déc. 2024 à 16:28
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -81,7 +81,7 @@ INSERT INTO `etapes` (`id_etape`, `date_etape`, `lieu_etape`, `nom_etape`, `desc
 (2, '2023-11-17', '62 Av. du Trois Septembre, 06320 Cap-d\'Ail', 'Cap-d’Ail en mode Kids Tour !', 'Rendez-vous à la mairie.\r\nPour cette étape de l’AS Monaco Kids tour, cette journée ensoleillée annonce pleins de surprises : \r\nRencontre avec notre mascotte et des invités surprises\r\nEntraînement de football\r\nQuiz sur l’AS Monaco\r\nParties de FC24 sur Playstation 5\r\nC’est aussi l’occasion de se mettre à l’épreuve lors d’un tire au but, les joueurs les plus précis auront le droit de repartir avec de belles surprises !', 'images/Temp_kidstour_Cap_dAil.jpg', 'images/Kidstour_img_enfant2.webp', 'Cap-d’Ail', '13h30 - 17h30'),
 (3, '2023-11-24', '1 Av. de la Victoire, 06320 La Turbie', 'Le Kids Tour à La Turbie vendredi 24 novembre !', 'Rendez-vous sur la place de la mairie.\r\nPour cette étape notre équipe vous propose plusieurs divertissements : \r\nRencontre avec notre fidèle mascotte Bouba\r\nEntraînement de foot avec des joueurs de Monaco\r\nQuiz sur l’AS Monaco\r\nCréation de décoration de Noël\r\nLa caravane rouge et blanche sera toujours remplie de pleins de goodies à vous offrir, une autre journée à ne pas louper !', 'images/Temp_kidstour_LaTurbine.jpg', 'images/Kidstour_img_enfant3.webp', 'La Turbie', '13h30 - 17h30'),
 (4, '2023-12-01', '5 Pl. de la République, 06670 Levens', 'Avec Folarin Balogun, un Kids Tour à Levens !', 'Rendez-vous sur la place de la mairie.\r\nPour cette étape, l’AS Monacoeur s’annonce encore une fois riche en surprises et émotions. De nombreux défis sont mis en place pour tenter de gagner les calendriers AS Monaco spécial Noël !', 'images/Temp_kidstour_Fayences_Levens.jpg', 'images/Kidstour_img_enfant4.webp', 'Levens', '13h30 - 17h30'),
-(5, '2023-12-08', 'Quai Albert 1er, 98000 Monaco', 'Le Kids Tour et Breel Embolo au Village de Noël de Monaco ce vendredi !', 'Rendez-vous au village de Noël\r\nUne journée encore remplie de surprises avec des séances de dédicaces, une visite du marché et d’autres activités et cadeaux pour fêter ce Noël !', 'images/Temp_kidstour_Monaco.jpg', 'images/Kidstour_img_enfant5.webp', 'Monaco', '13h30 - 17h30');
+(5, '2023-12-08', 'Quai Albert 1er, 98000 Monaco', 'Le Kids Tour et Breel Embolo au Village de Noël de Monaco ce vendredi !', 'Rendez-vous au village de Noël\r\nUne journée encore remplie de surprises avec des séances de dédicaces, une visite du marché et d’autres activités et cadeaux pour fêter ce Noël !', 'images/Temp_kidstour_Monaco.jpg', 'images/Kidstour_img_enfant5b.webp', 'Monaco', '13h30 - 17h30');
 
 -- --------------------------------------------------------
 

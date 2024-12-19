@@ -1,6 +1,6 @@
 <!-- Header -->
 <header>
-  <nav class="navbar fixed-top">
+  <nav class="navbar ">
     <div class="container-fluid">
       <span class="mx-auto">
         <a href="index.php" class="Titre  text-center fs-2"><h1>AS MONACOEUR</h1></a>

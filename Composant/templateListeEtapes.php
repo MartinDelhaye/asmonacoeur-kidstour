@@ -15,6 +15,7 @@
                             <div class="fst-italic"> {{date_etape}}<br>
                             {{lieu_etape}}<br> </div>
                             {{description_etape}}<br>
+                            <a href="etape.php?id_etape={{id_etape}}" class="btn btn-danger" >En savoir plus..</a>
                         </p>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invité
     <?php include('Composant/Header.php'); ?>
     <main>
     <article>
-        <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les étapes</h1>
+        <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les invités</h1>
     <div data-api="API/recupListeInvites.php" id="formListeFiltreOrdre">  
     <label for="ordre">Ordre : </Label>
     <select id="ordre">

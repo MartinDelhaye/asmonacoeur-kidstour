@@ -59,7 +59,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
 </head>
 
 <body>
-    <?php include 'Composant/header.php'; ?>
+    <?php include 'Composant/Header.php'; ?>
 
     <main class="container my-5">
         <!-- Titre principal -->
@@ -158,7 +158,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
         </section>
     </main>
 
-    <?php include 'Composant/footer.php'; ?>
+    <?php include 'Composant/Footer.php'; ?>
 </body>
 
 </html>

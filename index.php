@@ -14,7 +14,7 @@ if(isUserLoggedIn()) $user = $_SESSION['compte'];
   <title>Page d'acceuil</title>
 </head>
 <body>
-  <?php include 'Composant/header.php'; ?>
+  <?php include 'Composant/Header.php'; ?>
   <main>
     <div class="position-relative">
       <div class="bande-rouge img-fluid mx-auto ">

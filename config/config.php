@@ -1,9 +1,9 @@
 <?php
     $hote='localhost';
-    $port='8889';
+    $port='3306';
     $nom_bd='asmonacoeur_kidstour';
     $identifiant='root';
-    $mot_de_passe='root';
+    $mot_de_passe='';
     $encodage='utf8';
     $options=array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.$encodage);
     $bdd = new PDO('mysql:host='.$hote.';port='.$port.';dbname='.$nom_bd,$identifiant, $mot_de_passe,$options);

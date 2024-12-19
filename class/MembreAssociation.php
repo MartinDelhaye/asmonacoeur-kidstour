@@ -7,10 +7,11 @@ class MembreAssociation extends Users
         parent::__construct($id_user, $login_user, $mdp_user, $nom_user, $prenom_user);
     }
 
-    public function supprDonnee($table, $key_id, $id)
+    public function supprimerDonnees($table, $key_id, $id)
     {
         global $bdd;
         $aSuppr = obtenirDonnees("*", $table, "fetch", $key_id . "=" . $id);
+        if(!$aSuppr) return false;
 
         $cheminsImagesAsuppr = [];
         if (isset($aSuppr["image_etape"])) {
@@ -20,10 +21,10 @@ class MembreAssociation extends Users
             $cheminsImagesAsuppr[] = $aSuppr["illustration_etape"];
         }
         if (isset($aSuppr["image_invite"])) {
-            $cheminsImagesAsuppr[] = $aSuppr[""];
+            $cheminsImagesAsuppr[] = $aSuppr["image_invite"];
         }
         foreach ($cheminsImagesAsuppr as $cheminImageAsuppr) {
-            if (file_exists($cheminImageAsuppr)) {
+            if (!empty($cheminImageAsuppr) &&file_exists($cheminImageAsuppr)) {
                 // Supprimer le fichier d'image
                 echo "ça supprime une image <br>";
                 unlink($cheminImageAsuppr);
@@ -32,7 +33,8 @@ class MembreAssociation extends Users
 
         $requete_preparee = $bdd->prepare('DELETE FROM ' . $table . ' WHERE ' . $key_id . ' = ' . $id);
         // Suppression de la bdd
-        return $requete_preparee->execute();
+        if($requete_preparee->execute()) return "Données supprimées";
+        return false;
     }
 }
 

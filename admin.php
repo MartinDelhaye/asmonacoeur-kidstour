@@ -4,7 +4,8 @@ include_once('fonction/fonction.php');
 include_once('class/Users.php');
 
 
-if(isUserLoggedIn()) $user = $_SESSION['compte'];
+if (isUserLoggedIn())
+    $user = $_SESSION['compte'];
 
 if (!($user instanceof MembreAssociation)) {
     header('Location: index.php');
@@ -14,8 +15,8 @@ if (!($user instanceof MembreAssociation)) {
 include_once('Composant/templateFormSupprimerInvites.php');
 include_once('Composant/templateFormSupprimerEtapes.php');
 
-// include_once('Composant/templateFormModifInvites.php');
-// include_once('Composant/templateFormModifEtapes.php');
+include_once('Composant/templateFormModifInvites.php');
+include_once('Composant/templateFormModifEtapes.php');
 
 
 ?>
@@ -33,6 +34,19 @@ include_once('Composant/templateFormSupprimerEtapes.php');
     <?php include 'Composant/Header.php' ?>
     <main>
         <h1>Page d'administration</h1>
+        <?php if (isset($_SESSION['message_error'])): ?>
+            <p> <?php echo $_SESSION['message_error'] ?> </p>
+            <?php
+            unset($_SESSION['message_error']);
+        endif;
+        ?>
+        <?php if (isset($_SESSION['message_success'])): ?>
+            <p> <?php echo $_SESSION['message_success'] ?> </p>
+            <?php
+            unset($_SESSION['message_success']);
+        endif;
+        ?>
+
 
         <article>
             <h2> Suppression : </h2>
@@ -57,7 +71,7 @@ include_once('Composant/templateFormSupprimerEtapes.php');
                     <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
                     <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
                 </div>
-                    
+
             </section>
             <section>
                 <h3> Supprimer une Etape : </h3>
@@ -107,9 +121,9 @@ include_once('Composant/templateFormSupprimerEtapes.php');
 
                     <label for="filtreValeur">Valeur : </label>
                     <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
+                    <div class="listeInfo" data-template="templateFormModifInvites"></div>
                 </div>
-                    
+
             </section>
             <section>
                 <h3> Modifier une Etape : </h3>
@@ -134,7 +148,7 @@ include_once('Composant/templateFormSupprimerEtapes.php');
 
                     <label for="filtreValeur">Valeur : </label>
                     <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormSupprimerEtapes"></div>
+                    <div class="listeInfo" data-template="templateFormModifEtapes"></div>
                 </div>
             </section>
         </article>

@@ -1,9 +1,9 @@
 <!-- template Mustache -->
-<script id="templateFormSupprimerInvites" type="text/html">
+<script id="templateFormSupprimerEtapes" type="text/html">
     <form action="AdminSupprimer.php" method="POST">
       <select name="id_invite">
       {{ #. }}
-        <option value="{{id_invite}}">{{nom_invite}} {{prenom_invite}}</option>
+        <option value="{{id_etape}}">{{ville_etape}} | {{date_etape}} | {{heure_etape}} | {{nom_etape}}</option>
       {{ /. }}
       </select>
       <input type="submit" value="Supprimer">

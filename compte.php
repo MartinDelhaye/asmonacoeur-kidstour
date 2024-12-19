@@ -11,6 +11,13 @@ if (!isUserLoggedIn()) {
 
 $user = $_SESSION['compte'];
 
+if($user instanceof MembreAssociation){
+    include_once('Composant/templateListeEtapesMembreAssociation.php');
+}
+elseif($user instanceof Participant){
+    include_once('Composant/templateListeEtapesParticipant.php');
+}
+
 // Gestion des actions Déconnexion et Suppression de compte
 if (isset($_POST['logout'])) {
     session_destroy(); // Déconnexion de l'utilisateur
@@ -46,11 +53,9 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
 
 <head>
     <?php echo metadata(); ?>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <title>Compte</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -59,7 +64,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
     <main class="container my-5">
         <!-- Titre principal -->
         <div class="text-center mb-4">
-            <h1 class="display-5 text-danger">Mon Compte</h1>
+            <h1 class="display-5 text-danger p-5">Mon Compte</h1>
             <p class="lead">Bonjour <strong><?php echo htmlspecialchars($userPrenom . ' ' . $userNom); ?></strong> !</p>
         </div>
 
@@ -124,7 +129,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
         <section>
             <h2 class="h4 mb-3">Liste de vos étapes</h2>
             <div class="bg-light p-4 rounded shadow-sm">
-                <form id="formListeFiltreOrdre" class="row g-3 mb-3">
+            <div data-api="API/recupListeEtapesUser.php"  id="formListeFiltreOrdre">
                     <div class="col-md-4">
                         <label for="ordre" class="form-label">Ordre</label>
                         <select id="ordre" class="form-select">
@@ -145,7 +150,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
                         <label for="filtreValeur" class="form-label">Valeur</label>
                         <input type="text" id="filtreValeur" class="form-control" placeholder="Entrez une valeur">
                     </div>
-                </form>
+                </div>
                 <div id="listeInfo" data-template="templateListeEtapes">
                     <p class="text-muted">Les données seront affichées ici.</p>
                 </div>
@@ -154,7 +159,6 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
     </main>
 
     <?php include 'Composant/footer.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -3,105 +3,158 @@ include_once('config/config.php');
 include_once('fonction/fonction.php');
 include_once('class/Users.php');
 
-
-if (!isUserLoggedIn())
+// Redirection si l'utilisateur n'est pas connecté
+if (!isUserLoggedIn()) {
     header('Location: connexion.php');
-else $user = $_SESSION['compte'];
-
-if($user instanceof MembreAssociation){
-    include_once('Composant/templateListeEtapesMembreAssociation.php');
-}
-elseif($user instanceof Participant){
-    include_once('Composant/templateListeEtapesParticipant.php');
+    exit();
 }
 
-// print_r($_SESSION['compte']);
+$user = $_SESSION['compte'];
 
+// Gestion des actions Déconnexion et Suppression de compte
+if (isset($_POST['logout'])) {
+    session_destroy(); // Déconnexion de l'utilisateur
+    header('Location: connexion.php');
+    exit();
+}
+
+if (isset($_POST['delete_account'])) {
+    if ($user instanceof Users) {
+        $user->supprimerCompte(); // Méthode pour supprimer le compte
+    }
+    session_destroy(); // On détruit la session après suppression
+    header('Location: connexion.php');
+    exit();
+}
+
+// Gestion de la modification des informations
 $userNom = $user->getNomUser();
 $userPrenom = $user->getPrenomUser();
 $userLogin = $user->getLoginUser();
 
-
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login'])) {
-
-    if ($userNom != $_POST["nom"])
-        $nomModif = $_POST['nom'];
-    else
-        $nomModif = null;
-
-    if ($userPrenom != $_POST["prenom"])
-        $prenomModif = $_POST['prenom'];
-    else
-        $prenomModif = null;
-
-    if ($userLogin != $_POST["login"])
-        $loginModif = $_POST['login'];
-    else
-        $loginModif = null;
+if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
+    $nomModif = $userNom != $_POST["nom"] ? $_POST['nom'] : null;
+    $prenomModif = $userPrenom != $_POST["prenom"] ? $_POST['prenom'] : null;
+    $loginModif = $userLogin != $_POST["login"] ? $_POST['login'] : null;
 
     $user->modifInfos($nomModif, $prenomModif, $loginModif);
 }
-
-
-// Deconnexion (temporaire)
-//$_SESSION['compte']->deconnexion();
-//header('Location: connexion.php');
-
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <?php include 'Composant/header.php'  ?>
-    <main>
-        <h1>Compte</h1>
-        <p>Vous etes connecter en tant que : <?php echo $userPrenom . ' ' . $userNom ?></p>
+    <?php include 'Composant/header.php'; ?>
 
-        <h2>Modifier vos informations</h2>
-        <form action="compte.php" method="post">
-            <input type="text" name="nom" placeholder="Nom" value="<?php echo $userNom; ?>"> <br>
-            <input type="text" name="prenom" placeholder="Prenom" value="<?php echo $userPrenom; ?>"><br>
-            <input type="email" name="login" placeholder="Email" value="<?php echo $userLogin; ?>"> <br>
-            <input type="submit" value="Mettre à jour"> <br>
-        </form>
-        <h2>Modifier votre mot de passe</h2>
-        <form action="compte.php" method="post">
-            <input type="password" name="mdp_anc" placeholder="Mot de passe Actuel"> <br>
-            <input type="password" name="mdp" placeholder="Nouveau Mot de passe"> <br>
-            <input type="password" name="mdp_verif" placeholder="Confirmation du mot de passe"> <br>
-            <input type="submit" value="Modifier"> <br>
-        </form>
+    <main class="container my-5">
+        <!-- Titre principal -->
+        <div class="text-center mb-4">
+            <h1 class="display-5 text-danger">Mon Compte</h1>
+            <p class="lead">Bonjour <strong><?php echo htmlspecialchars($userPrenom . ' ' . $userNom); ?></strong> !</p>
+        </div>
 
-        <article>
-            <h2> Liste de vos étapes : </h2>
-            <div data-api="API/recupListeEtapesUser.php"  id="formListeFiltreOrdre">
-                <label for="ordre">Ordre : </label>
-                <select id="ordre">
-                    <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
-                    <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
-                    <option value="nom_etape ASC">Nom (A → Z)</option>
-                    <option value="nom_etape DESC">Nom (Z → A)</option>
-                </select>
+        <!-- Boutons Déconnexion et Suppression -->
+        <section class="text-center mb-4">
+            <form action="compte.php" method="post" class="d-inline">
+                <button type="submit" name="logout" class="btn btn-outline-danger shadow-sm me-2">
+                    Déconnexion
+                </button>
+            </form>
+            <form action="compte.php" method="post" class="d-inline">
+                <button type="submit" name="delete_account" class="btn btn-danger shadow-sm" 
+                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')">
+                    Supprimer le compte
+                </button>
+            </form>
+        </section>
 
-                <label for="filtre">Filtre : </label>
-                <select id="filtre">
-                    <option value="nom_etape" data-type="text">Nom</option>
-                    <option value="date_etape" data-type="date" >Date</option>
-                </select>
+        <!-- Formulaire Modifier Informations -->
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Modifier vos informations</h2>
+            <form action="compte.php" method="post" class="bg-light p-4 rounded shadow-sm">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" name="nom" class="form-control" value="<?php echo htmlspecialchars($userNom); ?>" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="prenom" class="form-label">Prénom</label>
+                        <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars($userPrenom); ?>" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="login" class="form-label">Email</label>
+                        <input type="email" name="login" class="form-control" value="<?php echo htmlspecialchars($userLogin); ?>" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger w-100">Mettre à jour</button>
+            </form>
+        </section>
 
-                <label for="filtreValeur">Valeur : </label>
-                <input type="text" id="filtreValeur" placeholder="Entrez une valeur">
+        <!-- Section Modifier Mot de Passe -->
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Modifier votre mot de passe</h2>
+            <form action="compte.php" method="post" class="bg-light p-4 rounded shadow-sm">
+                <div class="mb-3">
+                    <label for="mdp_anc" class="form-label">Mot de passe actuel</label>
+                    <input type="password" name="mdp_anc" class="form-control" placeholder="Mot de passe actuel" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mdp" class="form-label">Nouveau mot de passe</label>
+                    <input type="password" name="mdp" class="form-control" placeholder="Nouveau mot de passe" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mdp_verif" class="form-label">Confirmation du mot de passe</label>
+                    <input type="password" name="mdp_verif" class="form-control" placeholder="Confirmez le mot de passe" required>
+                </div>
+                <button type="submit" class="btn btn-danger w-100">Modifier</button>
+            </form>
+        </section>
+
+        <!-- Section Liste des Étapes -->
+        <section>
+            <h2 class="h4 mb-3">Liste de vos étapes</h2>
+            <div class="bg-light p-4 rounded shadow-sm">
+                <form id="formListeFiltreOrdre" class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <label for="ordre" class="form-label">Ordre</label>
+                        <select id="ordre" class="form-select">
+                            <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
+                            <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
+                            <option value="nom_etape ASC">Nom (A → Z)</option>
+                            <option value="nom_etape DESC">Nom (Z → A)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="filtre" class="form-label">Filtre</label>
+                        <select id="filtre" class="form-select">
+                            <option value="nom_etape">Nom</option>
+                            <option value="date_etape">Date</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="filtreValeur" class="form-label">Valeur</label>
+                        <input type="text" id="filtreValeur" class="form-control" placeholder="Entrez une valeur">
+                    </div>
+                </form>
+                <div id="listeInfo" data-template="templateListeEtapes">
+                    <p class="text-muted">Les données seront affichées ici.</p>
+                </div>
             </div>
-            <div id="listeInfo" data-template="templateListeEtapes"></div>
-        </article>
+        </section>
     </main>
-    <?php include 'Composant/footer.php'  ?>
+
+    <?php include 'Composant/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

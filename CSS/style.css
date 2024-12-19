@@ -1,11 +1,40 @@
+a{
+  all : unset;
+  text-decoration:wavy; /* Remet le soulignement */
+  cursor: pointer; /* Indique que c'est un lien cliquable */
+  display: inline; /* Rétablit le comportement en ligne des liens */
+  transition: color 0.3s ease; /* Ajoute une animation */
+}
+
+
+
 :root{
     --color-main : #bf2a38;
     --color-secondary : #fff;
-    --gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
+    --color-tertiary: #f7ff80;
+  
+}
+ @font-face {
+  font-family: 'AS Monaco Diagonale' ;
+  src: url(fonts/ASMonacoDiagonale.ttf);
+} 
 
-    
+.Titre{
+
 }
 
+h1{
+  font-family: 'AS Monaco Diagonale', sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .custom-bg-red {
     background-color: var(--color-main); /* Remplacez par votre nuance de rouge */
@@ -15,7 +44,9 @@
     background-color: var(--color-secondary);
     color: var(--color-main);}
 
-
+nav{
+  background-color: var(--color-main);
+}
 .nav-item a{
     color: var(--color-main);
 }
@@ -57,8 +88,12 @@ header{
     background-color: var(--color-main);
   }
   footer img{
-    width: 50px;
+    width: 80px;
   }
+ footer a:hover{
+  color: var(--color-tertiary) ;
+  }
+
   .scroll-to-top {
    width: 40px;
     background-color:var(--color-main);
@@ -75,11 +110,7 @@ header{
     background-color: var(--color-main); /* Changement de couleur au survol */
     transform: scale(1.1); /* Zoom léger au survol */
   }
-:root{
-    --color-main : #bf2a38;
-    --color-secondary : #fff;
-    
-}
+
 
 .custom-bg-red {
     background-color: var(--color-main); /* Remplacez par votre nuance de rouge */

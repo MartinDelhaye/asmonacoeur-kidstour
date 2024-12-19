@@ -33,7 +33,7 @@
                 <a class="nav-link" href="connexion.php">Connexion/Inscription<img src="images/icone.png" alt="icone" title="Connexion"></a>
               </li>
           <?php endif; ?>
-          <?php if ($user instanceof MembreAssociation): ?>
+          <?php if (isset($user) && $user instanceof MembreAssociation): ?>
               <li class="nav-item"><a class="nav-link" href="admin.php"> Administration </a></li>
             <?php endif; ?>
           </ul>

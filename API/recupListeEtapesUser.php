@@ -17,12 +17,11 @@ else $ordre = null;
 
 $listeEtapes = $user->getListeEtapes($filtre, $ordre);
 
-if($listeEtapes){
-    $donnees['listeEtapes'] = $listeEtapes;
+if(gettype($listeEtapes) == "array"){
     $donnees['status'] = "OK";
+    $donnees['liste'] = $listeEtapes;
 }
-
-else $donnees['status'] = "Aucune etape trouvée";
+else $donnees['status'] = $listeEtapes;
 
 // Encodage de la réponse en JSON et affichage
 header('Content-Type: application/json');

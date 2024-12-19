@@ -18,12 +18,23 @@ class Invites {
         $this->liste_etapes = $liste_etapes;
     }
 
-    // Méthode statique pour récupérer les invités
-    public static function getListeInvites(): array {
-        try {
-            return obtenirDonnees("*", "invites", 'fetchAll');
-        } catch (PDOException $e) {
-            die("Erreur lors de la récupération des invités : " . $e->getMessage());
-        }
+    /**
+     * Méthode statique pour récupérer les invités
+     *
+     * @param string|null $filtre Filtre pour la requête (exemple :"id_etape = 1")
+     * @param string|null $ordre Champ par lequel on souhaite trier les résultats (exemple : "nom DESC")
+     *
+     * @return array|string Tableau contenant les résultats de la requête ou message d'erreur
+     */
+    public static function getListeInvites($filtre = null, $ordre = null) {
+        $etapesUsers = obtenirDonnees(
+            '*',
+            'invites',
+            'fetchAll',
+            $filtre,
+            $ordre
+        );
+        if ($etapesUsers) return $etapesUsers;
+        return "Aucun invité trouvé";
     }
 }

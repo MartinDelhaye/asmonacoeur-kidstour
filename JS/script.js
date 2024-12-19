@@ -72,10 +72,11 @@ function afficherListe() {
             let renderedContent = '';
             console.log("liste : "+response.liste);
             let idTemplate = listeInfo.dataset.template;
-            response.liste.forEach(focus => {
-                const template = document.getElementById(idTemplate).innerHTML;
-                renderedContent += Mustache.render(template, focus); // Ajout de chaque étape au contenu
-            });
+            const template = document.getElementById(idTemplate).innerHTML;
+            renderedContent += Mustache.render(template, response.liste); // Ajout de chaque étape au contenu
+            // response.liste.forEach(focus => {
+                
+            // });
 
             // Insérer tout le contenu généré dans la zone 
             listeInfo.innerHTML = renderedContent;

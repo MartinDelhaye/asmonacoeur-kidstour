@@ -16,7 +16,7 @@ a{
 }
  @font-face {
   font-family: 'AS Monaco Diagonale' ;
-  src: url(fonts/ASMonacoDiagonale-Bold.ttf);
+  src: url(../fonts/ASMonacoDiagonale/ASMonacoDiagonale-Bold.ttf);
 } 
 
 h1{

@@ -75,7 +75,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
                     Déconnexion
                 </button>
             </form>
-            <form action="compte.php" method="get" class="d-inline">
+            <form action="compte.php" method="POST" class="d-inline">
                 <button type="submit" name="delete_account" class="btn btn-danger shadow-sm" 
                         onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')">
                     Supprimer le compte

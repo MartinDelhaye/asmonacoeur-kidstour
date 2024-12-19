@@ -16,10 +16,37 @@
 
       <!-- Section : Logo Facebook -->
       <div>
-      <a href="https://www.facebook.com/votrepage" target="_blank">
-      <img src="images/facebook.png" alt="Logo Facebook">
-     </a>
-        
+        <a href="https://www.facebook.com/asmonaco/" target="_blank">
+          <img src="images/facebook.png" alt="Logo Facebook">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mx-auto py-4">
+    <div class="row align-items-start">
+      <div class="plan col text-light">
+        <h3>Plan du site</h3>
+        <div>
+          <a href="index.php">Accueil</a>
+        </div>
+        <div>
+          <a href="etapes.php">Etapes</a>
+        </div>
+        <div>
+          <a href="connexion.php">Connexion</a>
+        </div>
+        <div>
+          <a href="invites.php">Invités</a>
+        </div>
+      </div>
+      <div class="contact col text-light">
+        <h3>Contact</h3>
+        <div>
+          <span>Mail :contact@asmonaco.com</span>
+        </div>
+        <div>
+          <a href="mention.php">Mentions Légal</a>
+        </div>
       </div>
     </div>
   </div>

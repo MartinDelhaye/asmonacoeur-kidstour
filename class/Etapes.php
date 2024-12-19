@@ -4,7 +4,7 @@ class Etapes
 {
     private $id_etape;
     private $date_etape;
-    private $nom;
+    private $nom_etape;
     private $description_etape;
     private $lieu_etape;
     private $illustration_etape;
@@ -102,14 +102,18 @@ class Etapes
         return $organisateurs;
     }
 
-    // Méthode statique pour récupérer les étapes
-    public static function getListeEtapes(): array {
-        try {
-            return obtenirDonnees("*", "etapes", 'fetchAll');
-        } catch (PDOException $e) {
-            die("Erreur lors de la récupération des étapes : " . $e->getMessage());
-        }
+    
+    public function getListeAutreEtape() {
+        $etapesUsers = obtenirDonnees(
+            '*',
+            'etapes',
+            'fetchAll',
+            'id_etape !='.$this->id_etape,
+        );
+        if ($etapesUsers) return $etapesUsers;
+        return "Aucune étape trouvée";
     }
+    
 
  /**
      * Méthode statique pour récupérer les invités
@@ -119,7 +123,7 @@ class Etapes
      *
      * @return array|string Tableau contenant les résultats de la requête ou message d'erreur
      */
-    /*public static function getListeEtapes($filtre = null, $ordre = null) {
+    public static function getListeEtapes($filtre = null, $ordre = null) {
         $etapesUsers = obtenirDonnees(
             '*',
             'etapes',
@@ -129,5 +133,5 @@ class Etapes
         );
         if ($etapesUsers) return $etapesUsers;
         return "Aucune étape trouvée";
-    }*/
+    }
 }

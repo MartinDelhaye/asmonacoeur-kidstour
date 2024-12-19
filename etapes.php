@@ -4,6 +4,8 @@ include_once('fonction/fonction.php');
 include_once('class/Users.php');
 include_once('class/Etapes.php');
 
+include_once('Composant/templateListeEtapes.php');
+
 // Récupération des invités depuis la base de données
 $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
 ?>
@@ -21,28 +23,29 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
 <body>
     <?php include('Composant/Header.php'); ?>
     <main>
-        <div class="container">
-            <?php foreach ($tab as $etape): ?>
-                <a href="etape.php?id_etape=<?php echo $etape['id_etape']; ?>">
-                    <div class="row mb-4 align-items-center text-center">
-                        <!-- Colonne pour l'image -->
-                        <div class="col-md-6 d-flex justify-content-center">
-                            <img src="<?php echo $etape['image_etape']; ?>" class="img-fluid" alt="Image étape">
-                        </div>
-                        <!-- Colonne pour les informations -->
-                        <div class="col-md-6 d-flex flex-column justify-content-center">
-                            <h5 class="fw-bold"><?php echo $etape['nom_etape'] ?></h5>
-                            <p>
-                                <?php echo $etape['date_etape']; ?><br>
-                                <?php echo $etape['lieu_etape']; ?><br>
-                                <?php echo $etape['description_etape']; ?><br>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
-    </main>
+    <article>
+        <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les étapes</h1>
+    <div data-api="API/recupListeEtapes.php" id="formListeFiltreOrdre">  
+    <label for="ordre">Ordre : </Label>
+    <select id="ordre">
+        <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
+        <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
+        <option value="nom_etape ASC">Nom (A -> Z)</option>
+        <option value="nom_etape DESC">Nom (Z -> A)</option>
+    </select>
+
+    <label for="filtre">Filtre : </label>
+    <select id="filtre">
+        <option value="nom_etape" data-type="text">Nom</option>
+        <option value="date_etape" data-type="date">Date</option>
+</select>
+    <label for="filtreValeur">Valeur : </label>
+    <input type="text" id="filtreValeur" placeholder="Entrez une valeur">
+</div>
+<div id="listeInfo" data-template="templateListeEtapes"></div>
+</article>
+        
+   
     <?php
     include 'Composant/scrollTopBtn.php';
     include 'Composant/Footer.php';

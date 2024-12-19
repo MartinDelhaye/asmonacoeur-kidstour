@@ -20,7 +20,7 @@
               <a class="nav-link" aria-current="page" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="etapes.php">Évènement</a>
+              <a class="nav-link" href="etapes.php">Étapes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="invites.php">Invités</a>

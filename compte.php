@@ -135,37 +135,18 @@ if(isset($message)) echo $message;
         <section>
             <h2 class="h4 mb-3">Liste de vos étapes</h2>
             <div class="bg-light p-4 rounded shadow-sm">
-            <div data-api="API/recupListeEtapesUser.php"  id="formListeFiltreOrdre">
-                    <div class="col-md-4">
-                        <label for="ordre" class="form-label">Ordre</label>
-                        <select id="ordre" class="form-select">
-                            <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
-                            <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
-                            <option value="nom_etape ASC">Nom (A → Z)</option>
-                            <option value="nom_etape DESC">Nom (Z → A)</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="filtre" class="form-label">Filtre</label>
-                        <select id="filtre" class="form-select">
-                            <option value="nom_etape">Nom</option>
-                            <option value="date_etape">Date</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="filtreValeur" class="form-label">Valeur</label>
-                        <input type="text" id="filtreValeur" class="form-control" placeholder="Entrez une valeur">
-                    </div>
-                </div>
-                <div id="listeInfo" data-template="templateListeEtapes">
-                    <p class="text-muted">Les données seront affichées ici.</p>
-                </div>
+            <div data-api="API/recupListeEtapesUser.php"  class="formListeFiltreOrdre">
+                <?php include('Composant/SelectEtapes.php') ?>
+                <div class="listeInfo" data-template="templateListeEtapes"></div>
+            </div>
+                
             </div>
         </section>
     </main>
 
-    <?php include 'Composant/Footer.php';  
-     include 'Composant/scrollTopBtn.php';
+    <?php 
+    include 'Composant/Footer.php';  
+    include 'Composant/scrollTopBtn.php';
     ?>
 </body>
 

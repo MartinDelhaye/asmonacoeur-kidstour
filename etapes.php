@@ -16,8 +16,8 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="liste étapes KidsTour AS Monacoeur">
+    <meta name="description" content="Page de la liste des étapes du Kids Tour organisé par l'AS Monaco">
     <title>Etapes</title>
 </head>
 

@@ -25,8 +25,6 @@ include_once('Composant/templateFormModifEtapes.php');
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="" />
     <title>Admin</title>
 </head>
 
@@ -53,7 +51,7 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Supprimer un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
-                <?php include_once('Composant/SelectInvites.php')?>   
+                <?php include('Composant/SelectInvites.php')?>   
                 <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
                 </div>
 
@@ -61,7 +59,7 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Supprimer une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
-                <?php include_once('Composant/SelectEtapes.php')?>
+                <?php include('Composant/SelectEtapes.php')?>
                 <div class="listeInfo" data-template="templateFormSupprimerEtapes"></div>
                 </div>
             </section>
@@ -71,7 +69,7 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Modifier un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
-                <?php include_once('Composant/SelectInvites.php')?>   
+                <?php include('Composant/SelectInvites.php')?>   
                 <div class="listeInfo" data-template="templateFormModifInvites"></div>
                 </div>
 
@@ -79,7 +77,7 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Modifier une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
-                <?php include_once('Composant/SelectEtapes.php')?> 
+                <?php include('Composant/SelectEtapes.php')?> 
                 <div class="listeInfo" data-template="templateFormModifEtapes"></div>
                 </div>
             </section>

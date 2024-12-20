@@ -27,7 +27,7 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
         <article>
             <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center mt-5">Les étapes</h1>
             <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
-            <?php include_once('Composant/SelectEtapes.php')?>
+            <?php include('Composant/SelectEtapes.php')?>
             <div class="listeInfo" data-template="templateListeEtapes"></div>
             </div>
         </article>

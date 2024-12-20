@@ -9,8 +9,8 @@ if(isUserLoggedIn()) $user = $_SESSION['compte'];
 <html lang="fr">
 <head>
   <?php echo metadata(); ?>
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+  <meta name="keywords" content="AS Monacoeur, AS Monacoeur, Kids Tour, football amateur, enfants AS Monaco, valeurs solidarité sport, Monaco Kids Tour, saison 2023-2024, animations football, événement AS Monaco">
+  <meta name="description" content="Découvrez l'AS Monacoeur Kids Tour, un programme pour les enfants mêlant football amateur, animations familiales et valeurs de solidarité à travers la saison 2023-2024.">
   <title>Page d'acceuil</title>
 </head>
 <body>

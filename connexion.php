@@ -53,8 +53,8 @@ if (isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['nom'])) {
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="" />
+    <meta name="keywords" content="AS MONACOEUR, connexion AS MONACOEUR, inscription AS MONACOEUR, utilisateur AS MONACOEUR, mot de passe AS MONACOEUR">
+    <meta name="description" content="Connectez-vous ou inscrivez-vous sur la plateforme AS MONACOEUR." />
     <title>Connexion</title>
 </head>
 

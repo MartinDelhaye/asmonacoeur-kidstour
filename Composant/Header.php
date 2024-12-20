@@ -1,11 +1,11 @@
 <!-- Header -->
 <header>
-  <nav class="navbar navbar-dark ">
+  <nav class="navbar  ">
     <div class="container-fluid">
       <span class="mx-auto">
         <a href="index.php" class="Titre  text-center fs-2"><h1>AS MONACOEUR</h1></a>
       </span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+      <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

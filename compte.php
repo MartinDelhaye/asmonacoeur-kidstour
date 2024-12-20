@@ -39,13 +39,19 @@ $userNom = $user->getNomUser();
 $userPrenom = $user->getPrenomUser();
 $userLogin = $user->getLoginUser();
 
-if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
-    $nomModif = $userNom != $_POST["nom"] ? $_POST['nom'] : null;
-    $prenomModif = $userPrenom != $_POST["prenom"] ? $_POST['prenom'] : null;
-    $loginModif = $userLogin != $_POST["login"] ? $_POST['login'] : null;
 
-    $user->modifInfos($nomModif, $prenomModif, $loginModif);
+if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
+    $message = $user->ModifierCompte($_POST['nom'], $_POST['prenom'], $_POST['login']);
 }
+
+if(isset($message)) echo $message;
+
+if (isset($_POST['mdp'], $_POST['mdp_anc'],$_POST['mdp_verif'] )){
+    // Appeler la méthode pour modifier le mot de passe
+    $message = $user->Modifmdp($_POST['mdp_anc'], $_POST['mdp'], $_POST['mdp_verif']);
+}
+
+if(isset($message)) echo $message;
 ?>
 
 <!DOCTYPE html>

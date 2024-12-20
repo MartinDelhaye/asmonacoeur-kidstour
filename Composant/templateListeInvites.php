@@ -12,7 +12,6 @@
                     <div class="col-md-6 d-flex flex-column justify-content-center">
                         <h5 class="text-danger fw-bold">{{nom_invite}} {{prenom_invite}} </h5>
                         <p>
-                            {{description_invite}}<br>
                             <a href="invite.php?id_invite={{id_invite}}" class="btn btn-danger">Découvrir</a>
             
                         </p>

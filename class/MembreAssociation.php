@@ -30,10 +30,10 @@ class MembreAssociation extends Users
             }
         }
 
-        $requete_preparee = $bdd->prepare('DELETE FROM ' . $table . ' WHERE ' . $key_id . ' = :id');
-        $requete_preparee->bindParam(':id', $id, PDO::PARAM_INT);
+        $c_preparee = $bdd->prepare('DELETE FROM ' . $table . ' WHERE ' . $key_id . ' = :id');
+        $c_preparee->bindParam(':id', $id, PDO::PARAM_INT);
         // Suppression de la bdd
-        if($requete_preparee->execute()) return "Données supprimées";
+        if($c_preparee->execute()) return "Données supprimées";
         return false;
     }
     public function modifierElement($table, $id, $data, $files) {
@@ -123,21 +123,23 @@ class MembreAssociation extends Users
         $setPrepare = join(', ', $setPrepare);
     
         $query = "UPDATE $table SET $setPrepare WHERE $key_id = :id";
-        $requete_preparee = $bdd->prepare($query);
+        $c_preparee = $bdd->prepare($query);
     
         // Lier les valeurs des modifications
         foreach ($modifications as $key => $value) {
-            $requete_preparee->bindValue(':' . $key, $value);
+            $c_preparee->bindValue(':' . $key, $value);
         }
-        $requete_preparee->bindValue(':id', $id, PDO::PARAM_INT);
+        $c_preparee->bindValue(':id', $id, PDO::PARAM_INT);
     
         // Exécuter la requête
-        $res = $requete_preparee->execute();
+        $res = $c_preparee->execute();
         if ($res) {
             return "Données modifiées";
         }
         return "Échec de la mise à jour";
+    }  
     }
+
 
     public function ajouterInvite($nom, $prenom, $description, $contact, $image) {
         global $bdd;
@@ -173,3 +175,4 @@ class MembreAssociation extends Users
     }
 }
 ?>
+

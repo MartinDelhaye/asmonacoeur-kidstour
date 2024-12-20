@@ -59,68 +59,27 @@ if ($id_invite) {
     <form action="adminModifierTraiter.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="type" value="<?= $data['type'] ?>">
         <input type="hidden" name="id" value="<?= $data['id'] ?>">
-        <input type="reset" value="Reset vos modifiaction"><br>
+        <input type="reset" value="Reset vos modifications"><br>
 
-        <?php if ($data['type'] === 'invites'): ?>
-            <label>
-                Nom : <input type="text" name="nom_invite" value="<?= $data['nom_invite'] ?>">
-            </label>
-            <br>
-            <label>
-                Prénom : <input type="text" name="prenom_invite" value="<?= $data['prenom_invite'] ?>">
-            </label>
-            <br>
-            <label>
-                Description : <textarea name="description_invite"><?= $data['description_invite'] ?></textarea>
-            </label>
-            <br>
-            <label>
-                Contact : <input type="text" name="contact_invite" value="<?= $data['contact_invite'] ?>">
-            </label>
-            <br>
-            <label>
-                Image : <input type="file" name="image_invite">
-                <p>Image actuelle :</p>
-                <img src="<?= $data['image_invite'] ?>" alt="Image actuelle" style="max-width: 200px; max-height: 200px;">
-            </label>
-        <?php elseif ($data['type'] === 'etapes'): ?>
-            <label>
-                Nom : <input type="text" name="nom_etape" value="<?= $data['nom_etape'] ?>">
-            </label>
-            <br>
-            <label>
-                Description : <textarea name="description_etape"><?= $data['description_etape'] ?></textarea>
-            </label>
-            <br>
-            <label>
-                Date : <input type="date" name="date_etape" value="<?= $data['date_etape'] ?>">
-            </label>
-            <br>
-            <label>
-                Heure : <input type="text" name="heure_etape" value="<?= $data['heure_etape'] ?>">
-            </label>
-            <br>
-            <label>
-                Lieu : <input type="text" name="lieu_etape" value="<?= $data['lieu_etape'] ?>">
-            </label>
-            <br>
-            <label>
-                Ville : <input type="text" name="ville_etape" value="<?= $data['ville_etape'] ?>">
-            </label>
-            <br>
-            <label>
-                Image : <input type="file" name="image_etape">
-                <p>Image actuelle :</p>
-                <img src="<?= $data['image_etape'] ?>" alt="Image actuelle" style="max-width: 200px; max-height: 200px;">
-            </label>
-            <br>
-            <label>
-                Illustration : <input type="file" name="illustration_etape">
-                <p>Illustration actuelle :</p>
-                <img src="<?= $data['illustration_etape'] ?>" alt="Illustration actuelle"
-                    style="max-width: 200px; max-height: 200px;">
-            </label>
-        <?php endif; ?>
+        <?php
+        if ($data['type'] === 'invites') {
+            echo creerChamp('nom_invite', 'Nom', $data['nom_invite']);
+            echo creerChamp('prenom_invite', 'Prénom', $data['prenom_invite']);
+            echo creerChamp('description_invite', 'Description', $data['description_invite'], 'textarea');
+            echo creerChamp('contact_invite', 'Contact', $data['contact_invite']);
+            echo creerChamp('image_invite', 'Image', $data['image_invite'], 'file', true);
+        } elseif ($data['type'] === 'etapes') {
+            echo creerChamp('nom_etape', 'Nom', $data['nom_etape']);
+            echo creerChamp('description_etape', 'Description', $data['description_etape'], 'textarea');
+            echo creerChamp('date_etape', 'Date', $data['date_etape'], 'date');
+            echo creerChamp('heure_etape', 'Heure', $data['heure_etape']);
+            echo creerChamp('lieu_etape', 'Lieu', $data['lieu_etape']);
+            echo creerChamp('ville_etape', 'Ville', $data['ville_etape']);
+            echo creerChamp('image_etape', 'Image', $data['image_etape'], 'file', true);
+            echo creerChamp('illustration_etape', 'Illustration', $data['illustration_etape'], 'file', true);
+        }
+        ?>
+
         <br>
         <input type="submit" value="Modifier">
     </form>

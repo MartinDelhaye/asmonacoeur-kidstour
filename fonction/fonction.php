@@ -137,3 +137,28 @@ function startSession()
     // Mettre à jour le timestamp de la dernière activité
     $_SESSION['last_activity'] = time();
 }
+
+function creerChamp($name, $label, $value = '', $type = 'text', $isFile = false)
+{
+    if ($isFile) {
+        // Champ de fichier
+        return "
+        <label>
+            $label : <input type=\"file\" name=\"$name\">
+            <p>Fichier actuel :</p>
+            <img src=\"$value\" alt=\"$label actuel\" style=\"max-width: 200px; max-height: 200px;\">
+        </label><br>";
+    } elseif ($type === 'textarea') {
+        // Champ de texte long
+        return "
+        <label>
+            $label : <textarea name=\"$name\">$value</textarea>
+        </label><br>";
+    } else {
+        // Champ de texte ou autre type
+        return "
+        <label>
+            $label : <input type=\"$type\" name=\"$name\" value=\"$value\">
+        </label><br>";
+    }
+}

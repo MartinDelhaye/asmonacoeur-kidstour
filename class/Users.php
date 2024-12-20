@@ -152,7 +152,37 @@ class Users
         }
     }
 
-    
+    public function Modifmdp($mdp_user, $nw_mdp, $confirm_mdp)
+{
+    global $bdd;
+
+    // Vérifier que le mot de passe actuel est correct
+    if (!password_verify($mdp_user, $this->mdp_user)) {
+        return "Le mot de passe actuel est incorrect.";
+    }
+
+    // Vérifier que les champs ne sont pas vides
+    if (empty($nw_mdp) || empty($confirm_mdp)) {
+        return "Les champs de nouveau mot de passe et de confirmation ne peuvent pas être vides.";
+    }
+
+    // Vérifier que le nouveau mot de passe et la confirmation correspondent
+    if ($nw_mdp !== $confirm_mdp) {
+        return "Les nouveaux mots de passe ne correspondent pas.";
+    }
+
+    // Préparer la requête pour mettre à jour le mot de passe
+    $requete_prepare = $bdd->prepare('UPDATE users SET mdp_user = :mdp_user WHERE id_user = :id_user');
+    $requete_prepare->bindValue(':mdp_user', password_hash($nw_mdp, PASSWORD_DEFAULT), PDO::PARAM_STR);
+    $requete_prepare->bindValue(':id_user', $this->id_user, PDO::PARAM_INT);
+
+    // Exécuter la requête et vérifier le succès
+    if ($requete_prepare->execute()) {
+        return "Mot de passe modifié avec succès.";
+    } else {
+        return "Une erreur est survenue lors de la mise à jour du mot de passe.";
+    }
+}
 
     public function getListeEtapes($filtre = null, $ordre = null)
     {

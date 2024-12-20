@@ -15,7 +15,7 @@ if (isUserLoggedIn())
   <title>Page d'acceuil</title>
 
 <body>
-  <?php include 'Composant/header.php'; ?>
+  <?php include 'Composant/Header.php'; ?>
   <main>
   <!-- Conteneur principal -->
   <div class="container mt-5 p-4 bg-white shadow rounded py-4">

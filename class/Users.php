@@ -101,6 +101,14 @@ class Users
     {
         unset($_SESSION['compte']);
     }
+    public function supprimerCompte()
+    {
+        global $bdd;
+        $requetePreparee = $bdd->prepare('DELETE FROM users WHERE id_user = :id_user');
+        $requetePreparee->bindValue(':id_user', $this->id_user, PDO::PARAM_INT);
+        $resultat = $requetePreparee->execute();
+        return $resultat;
+    }
 
     public static function loginExist($login_user)
     {

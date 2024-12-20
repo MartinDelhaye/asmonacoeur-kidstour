@@ -19,7 +19,7 @@ elseif($user instanceof Participant){
 }
 
 // Gestion des actions Déconnexion et Suppression de compte
-if (isset($_POST['logout'])) {
+if (isset($_GET['logout'])) {
     session_destroy(); // Déconnexion de l'utilisateur
     header('Location: connexion.php');
     exit();
@@ -59,7 +59,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
 </head>
 
 <body>
-    <?php include 'Composant/header.php'; ?>
+    <?php include 'Composant/Header.php'; ?>
 
     <main class="container my-5">
         <!-- Titre principal -->
@@ -70,12 +70,12 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
 
         <!-- Boutons Déconnexion et Suppression -->
         <section class="text-center mb-4">
-            <form action="compte.php" method="post" class="d-inline">
+            <form action="compte.php" method="GET" class="d-inline">
                 <button type="submit" name="logout" class="btn btn-outline-danger shadow-sm me-2">
                     Déconnexion
                 </button>
             </form>
-            <form action="compte.php" method="post" class="d-inline">
+            <form action="compte.php" method="POST" class="d-inline">
                 <button type="submit" name="delete_account" class="btn btn-danger shadow-sm" 
                         onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')">
                     Supprimer le compte
@@ -158,7 +158,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
         </section>
     </main>
 
-    <?php include 'Composant/footer.php'; ?>
+    <?php include 'Composant/Footer.php'; ?>
 </body>
 
 </html>

@@ -11,8 +11,6 @@ class Etapes
     private $image_etape;
     private $ville_etape;
     private $heure_etape;
-    private $nombre_membres;
-    private $liste_invite;
 
     // récupération des données //
     public function getIdEtape(){

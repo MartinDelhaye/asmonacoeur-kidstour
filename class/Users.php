@@ -117,6 +117,40 @@ class Users
             return true;
         return false;
     }
+    public function ModifierCompte($nvNom_user, $nvPrenom_user,$nvLogin_user)
+    {
+        global $bdd;
+    
+        // Vérifier que les champs ne sont pas vides
+        if (empty($nvNom_user) || empty($nvPrenom_user)) {
+            return "Les champs nom et prénom ne peuvent pas être vides.";
+        }
+    
+        // Préparer la requête pour mettre à jour les informations du compte
+        $requete_prepare = $bdd->prepare(
+            'UPDATE users 
+             SET nom_user = :nom_user, 
+                 login_user = :login_user, 
+                 prenom_user = :prenom_user 
+             WHERE id_user = :id_user'
+        );
+        $requete_prepare->bindValue(':nom_user', $nvNom_user, PDO::PARAM_STR);
+        $requete_prepare->bindValue(':prenom_user', $nvPrenom_user, PDO::PARAM_STR);
+        $requete_prepare->bindValue(':login_user', $nvLogin_user, PDO::PARAM_STR);
+        $requete_prepare->bindValue(':id_user', $this->id_user, PDO::PARAM_INT);
+    
+        // Exécuter la requête et vérifier le succès
+        if ($requete_prepare->execute()) {
+            $this->nom_user = $nvNom_user;
+            $this->login_user = $nvLogin_user;
+            $this->prenom_user = $nvPrenom_user;
+    
+    
+            return "Informations du compte modifiées avec succès.";
+        } else {
+            return "Une erreur est survenue lors de la mise à jour des informations.";
+        }
+    }
 
     public function getListeEtapes($filtre = null, $ordre = null)
     {

@@ -53,50 +53,16 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Supprimer un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
-                    <label for="ordre">Ordre : </label>
-                    <select class="ordre">
-                        <option value="nom_invite ASC">Nom (A → Z)</option>
-                        <option value="nom_invite DESC">Nom (Z → A)</option>
-                        <option value="prenom_invite ASC">Prénom (A → Z)</option>
-                        <option value="prenom_invite DESC">Prénom (Z → A)</option>
-                    </select>
-
-                    <label for="filtre">Filtre : </label>
-                    <select class="filtre">
-                        <option value="nom_invite" data-type="text">Nom</option>
-                        <option value="prenom_invite" data-type="text">Prénom</option>
-                    </select>
-
-                    <label for="filtreValeur">Valeur : </label>
-                    <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
+                <?php include_once('Composant/SelectInvites.php')?>   
+                <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
                 </div>
 
             </section>
             <section>
                 <h3> Supprimer une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
-                    <label for="ordre">Ordre : </label>
-                    <select class="ordre">
-                        <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
-                        <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
-                        <option value="nom_etape ASC">Nom (A -> Z)</option>
-                        <option value="nom_etape DESC">Nom (Z -> A)</option>
-                        <option value="ville_etape ASC">Ville (A -> Z)</option>
-                        <option value="ville_etape DESC">Ville (Z -> A)</option>
-                    </select>
-
-                    <label for="filtre">Filtre : </label>
-                    <select class="filtre">
-                        <option value="nom_etape" data-type="text">Nom</option>
-                        <option value="ville_etape" data-type="text">Ville</option>
-                        <option value="nom_etape" data-type="text">Nom</option>
-                        <option value="date_etape" data-type="date">Date</option>
-                    </select>
-
-                    <label for="filtreValeur">Valeur : </label>
-                    <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormSupprimerEtapes"></div>
+                <?php include_once('Composant/SelectEtapes.php')?>
+                <div class="listeInfo" data-template="templateFormSupprimerEtapes"></div>
                 </div>
             </section>
         </article>
@@ -105,50 +71,16 @@ include_once('Composant/templateFormModifEtapes.php');
             <section>
                 <h3> Modifier un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
-                    <label for="ordre">Ordre : </label>
-                    <select class="ordre">
-                        <option value="nom_invite ASC">Nom (A → Z)</option>
-                        <option value="nom_invite DESC">Nom (Z → A)</option>
-                        <option value="prenom_invite ASC">Prénom (A → Z)</option>
-                        <option value="prenom_invite DESC">Prénom (Z → A)</option>
-                    </select>
-
-                    <label for="filtre">Filtre : </label>
-                    <select class="filtre">
-                        <option value="nom_invite" data-type="text">Nom</option>
-                        <option value="prenom_invite" data-type="text">Prénom</option>
-                    </select>
-
-                    <label for="filtreValeur">Valeur : </label>
-                    <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormModifInvites"></div>
+                <?php include_once('Composant/SelectInvites.php')?>   
+                <div class="listeInfo" data-template="templateFormModifInvites"></div>
                 </div>
 
             </section>
             <section>
                 <h3> Modifier une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
-                    <label for="ordre">Ordre : </label>
-                    <select class="ordre">
-                        <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
-                        <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
-                        <option value="nom_etape ASC">Nom (A -> Z)</option>
-                        <option value="nom_etape DESC">Nom (Z -> A)</option>
-                        <option value="ville_etape ASC">Ville (A -> Z)</option>
-                        <option value="ville_etape DESC">Ville (Z -> A)</option>
-                    </select>
-
-                    <label for="filtre">Filtre : </label>
-                    <select class="filtre">
-                        <option value="nom_etape" data-type="text">Nom</option>
-                        <option value="ville_etape" data-type="text">Ville</option>
-                        <option value="nom_etape" data-type="text">Nom</option>
-                        <option value="date_etape" data-type="date">Date</option>
-                    </select>
-
-                    <label for="filtreValeur">Valeur : </label>
-                    <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
-                    <div class="listeInfo" data-template="templateFormModifEtapes"></div>
+                <?php include_once('Composant/SelectEtapes.php')?> 
+                <div class="listeInfo" data-template="templateFormModifEtapes"></div>
                 </div>
             </section>
         </article>

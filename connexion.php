@@ -76,7 +76,7 @@ if (isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['nom'])) {
                             <form action="" method="POST">
                                 <div class="mb-3">
                                     <label class="form-label">Email
-                                        <input type="text" name="login" class="form-control" placeholder="Email"
+                                        <input type="email" name="login" class="form-control" placeholder="Email"
                                             required>
                                     </label>
                                 </div>
@@ -106,7 +106,7 @@ if (isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['nom'])) {
                             <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="login" class="form-label">Email</label>
-                                    <input type="text" name="login" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="login" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="mdp" class="form-label">Mot de passe</label>

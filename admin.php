@@ -25,12 +25,12 @@ include_once('Composant/templateFormModifEtapes.php');
 
 <head>
     <?php echo metadata(); ?>
+
     <title>Admin</title>
 </head>
 
 <body>
     <?php include 'Composant/Header.php' ?>
-    <main>
         <h1>Page d'administration</h1>
         <?php if (isset($_SESSION['message_error'])): ?>
             <p> <?php echo $_SESSION['message_error'] ?> </p>
@@ -45,19 +45,19 @@ include_once('Composant/templateFormModifEtapes.php');
         endif;
         ?>
 
-
-        <article>
-            <h2> Suppression : </h2>
-            <section>
-                <h3> Supprimer un invité : </h3>
+<main class="container my-5">
+        <article >
+            <h2 class="h4 mb-3 text-danger" > Suppression : </h2>
+            <section class="mb-5">
+                <h3 class="h4 mb-3"> Supprimer un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
                 <?php include('Composant/SelectInvites.php')?>   
                 <div class="listeInfo" data-template="templateFormSupprimerInvites"></div>
                 </div>
 
             </section>
-            <section>
-                <h3> Supprimer une Etape : </h3>
+            <section class="mb-5">
+                <h3 class="h4 mb-3"> Supprimer une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
                 <?php include('Composant/SelectEtapes.php')?>
                 <div class="listeInfo" data-template="templateFormSupprimerEtapes"></div>
@@ -65,20 +65,20 @@ include_once('Composant/templateFormModifEtapes.php');
             </section>
         </article>
         <article>
-            <h2> Modification : </h2>
-            <section>
-                <h3> Modifier un invité : </h3>
+            <h2 class="h4 mb-3  text-danger" > Modification : </h2>
+            <section class="mb-5">
+                <h3 class="h4 mb-3"> Modifier un invité : </h3>
                 <div data-api="API/recupListeInvites.php" class="formListeFiltreOrdre">
                 <?php include('Composant/SelectInvites.php')?>   
                 <div class="listeInfo" data-template="templateFormModifInvites"></div>
                 </div>
 
             </section>
-            <section>
-                <h3> Modifier une Etape : </h3>
+            <section class="mb-5">
+                <h3 class="h4 mb-3"> Modifier une Etape : </h3>
                 <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
                 <?php include('Composant/SelectEtapes.php')?> 
-                <div class="listeInfo" data-template="templateFormModifEtapes"></div>
+                <div class="listeInfo"  data-template="templateFormModifEtapes"></div>
                 </div>
             </section>
         </article>

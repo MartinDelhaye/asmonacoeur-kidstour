@@ -20,6 +20,7 @@ if (isUserLoggedIn())
   <!-- Conteneur principal -->
   <div class="container mt-5 p-4 bg-white shadow rounded py-4">
     <!-- Section Identité -->
+   <h1 class="text-center text-dark">Mentions legales</h1>
     <div class="mb-4">
       <h2 class="h4 border-bottom pb-2">Identité</h2>
       <p class="mb-1">
@@ -32,7 +33,7 @@ if (isUserLoggedIn())
         <strong>Téléphone :</strong> 01 23 45 67 89
       </p>
       <p>
-        <strong>Email :</strong> <a href="mailto:contact@association.fr">contact@association.fr</a>
+        <strong>Email :</strong> <a href="mailto:contact@asmonaco.com">contact@asmonaco.com</a>
       </p>
     </div>
 

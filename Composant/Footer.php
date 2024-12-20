@@ -42,7 +42,7 @@
       <div class="contact col text-light">
         <h3>Contact</h3>
         <div>
-          <span>Mail :contact@asmonaco.com</span>
+        <strong>Email :</strong> <a href="mailto:contact@asmonaco.com">contact@asmonaco.com</a>
         </div>
         <div>
           <a href="mention.php">Mentions Légal</a>

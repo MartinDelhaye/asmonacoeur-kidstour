@@ -53,8 +53,8 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="AS MONACOEUR, compte AS MONACOEUR, calendrier AS MONACOEUR, étapes AS MONACOEUR, événements AS MONACOOEUR">
+    <meta name="description" content="Gérez votre compte et les étapes AS MONACOEUR facilement.">
     <title>Compte</title>
 </head>
 

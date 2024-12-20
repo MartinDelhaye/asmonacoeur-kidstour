@@ -1,7 +1,7 @@
 <div class="container py-4">
     <!-- Section Ordre -->
     <div class="mb-3">
-    <div class="bg-light p-4 rounded shadow-sm">
+    <div class="bg-light p-4 rounded shadow-md">
         <label for="ordre" class="form-label fw-bold">Ordre</label>
         <select class="ordre form-select">
             <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>

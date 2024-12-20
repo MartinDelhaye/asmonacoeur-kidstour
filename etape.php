@@ -3,8 +3,10 @@ include_once('config/config.php');
 include_once('fonction/fonction.php');
 include_once('class/Users.php');
 include_once('class/Etapes.php');
+include_once('class/MembreAssociation.php');
 
-if(isUserLoggedIn()) $user = $_SESSION['compte'];
+if (isUserLoggedIn())
+    $user = $_SESSION['compte'];
 
 $etape = new Etapes($_GET["id_etape"]);
 
@@ -45,8 +47,7 @@ $heure_etape = $etape->getHeureEtape();
         <div class="container">
             <div class="text-center">
                 <h1 class="fw-bold titre1 invite1"><?php echo $nom_etape; ?></h1>
-                <img src="<?php echo $image_etape; ?>" alt="Enfant Jouant"
-                    class="img-fluid event-image">
+                <img src="<?php echo $image_etape; ?>" alt="Enfant Jouant" class="img-fluid event-image">
             </div>
         </div>
 
@@ -54,24 +55,24 @@ $heure_etape = $etape->getHeureEtape();
             <div class="section-details text-start mt-3">
                 <p><span>Organisateur :</span>
                     <?php foreach ($tabOrganisateur as $organisateur) {
-                        if(isset($listeOragnisateur)) {
+                        if (isset($listeOragnisateur)) {
                             $listeOragnisateur .= ", " . $organisateur['nom_user'] . " " . $organisateur['prenom_user'];
-                        }
-                        else $listeOragnisateur = $organisateur['nom_user'] . " " . $organisateur['prenom_user'];
-                    } 
+                        } else
+                            $listeOragnisateur = $organisateur['nom_user'] . " " . $organisateur['prenom_user'];
+                    }
                     echo $listeOragnisateur
-                    ?>
+                        ?>
                 </p>
                 <p><span>Invités :</span>
                     <?php foreach ($tabInvites as $invite) {
-                        if(isset($listeInvites)) {
-                            $listeInvites .= ", <a class='lienInvite' href='invite.php?id_invite=".$invite['id_invite']."'>".$invite['nom_invite'] . " " . $invite['prenom_invite']."</a>";
-                        }
-                        else $listeInvites = "<a class='lienInvite' href='invite.php?id_invite=".$invite['id_invite']."'>".$invite['nom_invite'] . " " . $invite['prenom_invite']."</a>";
+                        if (isset($listeInvites)) {
+                            $listeInvites .= ", <a class='lienInvite' href='invite.php?id_invite=" . $invite['id_invite'] . "'>" . $invite['nom_invite'] . " " . $invite['prenom_invite'] . "</a>";
+                        } else
+                            $listeInvites = "<a class='lienInvite' href='invite.php?id_invite=" . $invite['id_invite'] . "'>" . $invite['nom_invite'] . " " . $invite['prenom_invite'] . "</a>";
 
-                    } 
+                    }
                     echo $listeInvites
-                    ?>
+                        ?>
                 </p>
                 <p><span>Horaire :</span> <?php echo $heure_etape; ?></p>
             </div>
@@ -88,27 +89,45 @@ $heure_etape = $etape->getHeureEtape();
                 </div>
             </div>
         </div>
+        <div class="container img-fluid">
 
-        <div class="container">
-            <?php if (isset($user)): ?>
-                <p>Voici le nombre d'enfant inscrit <?php echo $nbr_enfant["nbr_enfant"]; ?></p>
-                <br>
-                <div class="mb-3">
-                    <label for="mdp_anc" class="form-label">Nombre d'enfant que vous voulez inscrire</label>
-                    <input type="text" name="mdp_anc" class="form-control w-50 text-center" placeholder="Nombre d'enfant" required>
-                </div>
-                <button type="submit" class="btn btn-danger w-50 text-center">Participer</button>
-            <?php endif; ?>
+        <?php if (!isset($user)): ?>
+           <div class="text-center  rounded shadow">
+            <p>Inscrivez-vous pour participer a cette evenement</p>
+            <a class="text-center" href="connexion.php">Connexion/Inscription
+        <img src="images/icone.png" alt="Icône de connexion" width="30px" title="Connexion">
+    </a>
+    </div>
+<?php elseif ($user instanceof MembreAssociation): ?>
+    <button type="submit" class="btn btn-danger w-50 text-center">Organiser</button>
+<?php elseif ($user instanceof Participant): ?>
+    <button type="submit" class="btn btn-danger w-50 text-center">Participer</button>
+    <div class="mb-3">
+        <label for="nombre_enfants" class="form-label">Nombre d'enfant que vous voulez inscrire</label>
+        <input type="text" id="nombre_enfants" name="nombre_enfants" class="form-control w-50 text-center" placeholder="Nombre d'enfant" required>
+    </div>
+<?php endif; ?>
+
+
+
+
+
         </div>
+
+
+
 
         <!-- Carousel Images à changer-->
         <div class="container">
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <?php for($i=0; $i <count($tabListeAutreEtape); $i++) : ?>
-                        <a href="etape.php?id_etape=<?php echo $tabListeAutreEtape[$i]["id_etape"]?>">
-                            <div class="carousel-item <?php if($i==0)echo'active'?>">
-                                <img class="d-block img-fluid rounded shadow p-3 mb-5 mx-auto" src="<?php echo $tabListeAutreEtape[$i]["image_etape"]?>" class="d-block w-100" alt="Etape 2">
+                    <?php for ($i = 0; $i < count($tabListeAutreEtape); $i++): ?>
+                        <a href="etape.php?id_etape=<?php echo $tabListeAutreEtape[$i]["id_etape"] ?>">
+                            <div class="carousel-item <?php if ($i == 0)
+                                echo 'active' ?>">
+                                    <img class="d-block img-fluid rounded shadow p-3 mb-5 mx-auto"
+                                        src="<?php echo $tabListeAutreEtape[$i]["image_etape"] ?>" class="d-block w-100"
+                                    alt="Etape 2">
                             </div>
                         </a>
                     <?php endfor; ?>
@@ -124,7 +143,9 @@ $heure_etape = $etape->getHeureEtape();
             </div>
         </div>
     </main>
-    <?php include 'Composant/Footer.php'; ?>
+    <?php include 'Composant/Footer.php'; 
+     include 'Composant/scrollTopBtn.php';
+    ?>
 </body>
 
 </html>

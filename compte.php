@@ -37,7 +37,7 @@ if (isset($_POST['delete_account'])) {
 // Gestion de la modification des informations
 $userNom = $user->getNomUser();
 $userPrenom = $user->getPrenomUser();
-$userLogin = $user->getLoginUser();
+$userLogin = $user->getLoginUser();    
 
 
 if (isset($_POST['nom'], $_POST['prenom'], $_POST['login'])) {
@@ -164,7 +164,9 @@ if(isset($message)) echo $message;
         </section>
     </main>
 
-    <?php include 'Composant/Footer.php'; ?>
+    <?php include 'Composant/Footer.php';  
+     include 'Composant/scrollTopBtn.php';
+    ?>
 </body>
 
 </html>

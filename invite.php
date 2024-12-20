@@ -94,7 +94,11 @@ $contact_invite = $invite->getContactInvite();
             </div>
         </div>
     </main>
-    <?php include 'Composant/Footer.php'; ?>
+    <?php 
+     include 'Composant/Footer.php'; 
+     include 'Composant/scrollTopBtn.php';
+    ?>
+
 </body>
 
 </html>

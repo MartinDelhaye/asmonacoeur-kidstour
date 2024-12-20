@@ -1,38 +1,46 @@
 <!-- Header -->
 <header>
-  <nav class="navbar" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid text-center">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
-        aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+  <nav class="navbar ">
+    <div class="container-fluid">
+      <span class="mx-auto">
+        <a href="index.php" class="Titre  text-center fs-2"><h1>AS MONACOEUR</h1></a>
+      </span>
+      <button class="navbar-toggler bg-body-tertiary" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <span class="navbar-brand mx-auto fs-2 text-center text-light ">AS MONACOEUR</span>
-
-      <div class="offcanvas offcanvas-end texte-bg-danger" tabindex="-1" id="offcanvasNavbarDark"
-        aria-labelledby="offcanvasNavbarDarkLabel">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.php">Acceuil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="connexion.php">Connexion <img src="images/icone.png" alt=""></a>
+              <a class="nav-link" aria-current="page" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="etapes.php">Étapes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="invites.php">Invités</a>
-
             </li>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <?php if (isset($user)): ?>
+              <li class="nav-item"><a class="nav-link" href="compte.php">Compte<img src="images/icone.png"></a></li>
+              <li class="nav-item"><a class="nav-link" href="compte.php?logout">Se déconnecter</a></li>
+            <?php else: ?>
+              <li class="nav-item">
+                <a class="nav-link" href="connexion.php">Connexion/Inscription<img src="images/icone.png" alt="icone" title="Connexion"></a>
+              </li>
+          <?php endif; ?>
+          <?php if (isset($user) && $user instanceof MembreAssociation): ?>
+              <li class="nav-item"><a class="nav-link" href="admin.php"> Administration </a></li>
+            <?php endif; ?>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Recherche</button>
+          </form>
         </div>
       </div>
     </div>

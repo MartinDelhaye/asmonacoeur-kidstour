@@ -60,8 +60,9 @@ INSERT INTO `anime` (`id_anime`, `id_invite`, `id_etape`) VALUES
 -- Structure de la table `etapes`
 --
 
+-- Structure de la table `etapes`
 CREATE TABLE `etapes` (
-  `id_etape` int(11) NOT NULL,
+  `id_etape` int(11) NOT NULL AUTO_INCREMENT,
   `date_etape` date NOT NULL,
   `lieu_etape` varchar(150) NOT NULL,
   `nom_etape` varchar(255) NOT NULL,
@@ -69,7 +70,7 @@ CREATE TABLE `etapes` (
   `illustration_etape` varchar(255) NOT NULL,
   `image_etape` varchar(255) NOT NULL,
   `ville_etape` varchar(100) NOT NULL,
-  `heure_etape` varchar(50) NOT NULL
+  `heure_etape` varchar(50) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

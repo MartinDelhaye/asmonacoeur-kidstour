@@ -4,6 +4,8 @@ include_once('fonction/fonction.php');
 include_once('class/Users.php');
 include_once('class/Etapes.php');
 
+if(isUserLoggedIn()) $user = $_SESSION['compte'];
+
 $etape = new Etapes($_GET["id_etape"]);
 
 $nbr_enfant = $etape->getNombreParticipant();
@@ -87,6 +89,18 @@ $heure_etape = $etape->getHeureEtape();
             </div>
         </div>
 
+        <div class="container">
+            <?php if (isset($user)): ?>
+                <p>Voici le nombre d'enfant inscrit <?php echo $nbr_enfant["nbr_enfant"]; ?></p>
+                <br>
+                <div class="mb-3">
+                    <label for="mdp_anc" class="form-label">Nombre d'enfant que vous voulez inscrire</label>
+                    <input type="text" name="mdp_anc" class="form-control w-50 text-center" placeholder="Nombre d'enfant" required>
+                </div>
+                <button type="submit" class="btn btn-danger w-50 text-center">Participer</button>
+            <?php endif; ?>
+        </div>
+
         <!-- Carousel Images à changer-->
         <div class="container">
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -94,7 +108,7 @@ $heure_etape = $etape->getHeureEtape();
                     <?php for($i=0; $i <count($tabListeAutreEtape); $i++) : ?>
                         <a href="etape.php?id_etape=<?php echo $tabListeAutreEtape[$i]["id_etape"]?>">
                             <div class="carousel-item <?php if($i==0)echo'active'?>">
-                                <img src="<?php echo $tabListeAutreEtape[$i]["image_etape"]?>" class="d-block w-100" alt="Etape 2">
+                                <img class="d-block img-fluid rounded shadow p-3 mb-5 mx-auto" src="<?php echo $tabListeAutreEtape[$i]["image_etape"]?>" class="d-block w-100" alt="Etape 2">
                             </div>
                         </a>
                     <?php endfor; ?>

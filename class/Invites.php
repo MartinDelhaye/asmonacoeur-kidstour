@@ -8,7 +8,6 @@ class Invites {
     private $description_invite;
     private $image_invite; 
     private $contact_invite;
-    private $liste_etapes; 
 
     public function getIdInvite(){
         return $this->id_invite;
@@ -34,10 +33,6 @@ class Invites {
         return $this->contact_invite;
     }
 
-    public function getListeEtapes(){
-        return $this->liste_etapes;
-    }
-
 
     public function __construct($id_invite){
         $invite = obtenirDonnees("*","invites","fetch","id_invite=".$id_invite);
@@ -51,6 +46,17 @@ class Invites {
             //$this->liste_etapes = $invite["liste_etapes"];
 
         }
+    }
+
+    public function getListeAutreInvite() {
+        $invitesUsers = obtenirDonnees(
+            '*',
+            'invites',
+            'fetchAll',
+            'id_invite !='.$this->id_invite,
+        );
+        if ($invitesUsers) return $invitesUsers;
+        return "Aucun invité trouvé";
     }
 
 
@@ -75,26 +81,17 @@ class Invites {
     }
 
     //récupération des étapes de chaque invités
-    /*public function getListeEtapes(){
-        $organisateurs = obtenirDonnees(
-            'users.nom_user, users.prenom_user, users.id_user',
+    public function getListeEtapes(){
+        $etapes = obtenirDonnees(
+            'etapes.nom_etape, etapes.ville_etape, etapes.heure_etape, etapes.id_etape',
             'anime',
             'fetchALL',
-            "organise.id_etape = " . $this->getIdEtape(),
+            "anime.id_invite = " . $this->getIdInvite(),
             null,
             [
-                ['tableBase' => 'organise', 'tableToJoin' => 'users', 'lien' => 'id_user']
+                ['tableBase' => 'anime', 'tableToJoin' => 'etapes', 'lien' => 'id_etape']
             ]
         );
-        return $organisateurs;
-    }*/
-
-    // Méthode statique pour récupérer les étapes
-    /*public static function getListeInvites(): array {
-        try {
-            return obtenirDonnees("*", "invites", 'fetchAll');
-        } catch (PDOException $e) {
-            die("Erreur lors de la récupération des invités : " . $e->getMessage());
-        }
-    }*/
+        return $etapes;
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 include_once('fonction/fonction.php');
-
+include_once('class/Users.php');
 
 if(isUserLoggedIn()) $user = $_SESSION['compte'];
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,7 +14,7 @@ if(isUserLoggedIn()) $user = $_SESSION['compte'];
   <title>Page d'acceuil</title>
 </head>
 <body>
-  <?php include 'Composant/header.php'; ?>
+  <?php include 'Composant/Header.php'; ?>
   <main>
     <div class="position-relative">
       <div class="bande-rouge img-fluid mx-auto ">

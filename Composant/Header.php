@@ -25,16 +25,18 @@
             <li class="nav-item">
               <a class="nav-link" href="invites.php">Invités</a>
             </li>
-            <?php if (isset($user) && $user instanceof Users): ?>
+            <?php if (isset($user)): ?>
               <li class="nav-item"><a class="nav-link" href="compte.php">Compte<img src="images/icone.png"></a></li>
-              <li class="nav-item"><a class="nav-link" href="deconnecter.php">Se déconnecter</a></li>
+              <li class="nav-item"><a class="nav-link" href="compte.php?logout">Se déconnecter</a></li>
             <?php else: ?>
               <li class="nav-item">
-                <a class="nav-link" href="connexion.php">Connexion/Inscription<img src="images/icone.png" alt="icone"
-                    title="Connexion"></a>
+                <a class="nav-link" href="connexion.php">Connexion/Inscription<img src="images/icone.png" alt="icone" title="Connexion"></a>
               </li>
-            </ul>
           <?php endif; ?>
+          <?php if (isset($user) && $user instanceof MembreAssociation): ?>
+              <li class="nav-item"><a class="nav-link" href="admin.php"> Administration </a></li>
+            <?php endif; ?>
+          </ul>
           <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Recherche</button>

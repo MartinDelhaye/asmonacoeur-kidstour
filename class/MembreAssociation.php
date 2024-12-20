@@ -139,6 +139,40 @@ class MembreAssociation extends Users
         return "Échec de la mise à jour";
     }  
     }
-    
-    ?>
-    
+
+
+    public function ajouterInvite($nom, $prenom, $description, $contact, $image) {
+        global $bdd;
+        $query = "INSERT INTO invites (nom_invite, prenom_invite, description_invite, contact_invite, image_invite)
+                  VALUES (:nom, :prenom, :description, :contact, :image)";
+        
+        $stmt = $bdd->prepare($query);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':contact', $contact);
+        $stmt->bindParam(':image', $image);
+        
+        return $stmt->execute();
+    }
+
+    public function ajouterEtape($nom, $description, $date, $heure, $lieu, $ville, $image, $illustration) {
+        global $bdd;
+        $query = "INSERT INTO etapes (nom_etape, description_etape, date_etape, heure_etape, lieu_etape, ville_etape, image_etape, illustration_etape)
+                  VALUES (:nom, :description, :date, :heure, :lieu, :ville, :image, :illustration)";
+        
+        $stmt = $bdd->prepare($query);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':heure', $heure);
+        $stmt->bindParam(':lieu', $lieu);
+        $stmt->bindParam(':ville', $ville);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':illustration', $illustration);
+        
+        return $stmt->execute();
+    }
+}
+?>
+

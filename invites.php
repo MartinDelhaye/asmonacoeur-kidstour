@@ -14,8 +14,8 @@ $tab = Invites::getListeInvites(); // Méthode qui retourne un tableau d'invité
 
 <head>
     <?php echo metadata(); ?>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="liste invités KidsTour AS Monacoeur">
+    <meta name="description" content="Page de la liste des invités du Kids Tour organisé par l'AS Monaco">
     <title>Invités</title>
 </head>
 

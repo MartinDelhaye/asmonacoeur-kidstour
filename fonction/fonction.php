@@ -138,7 +138,7 @@ function startSession()
     $_SESSION['last_activity'] = time();
 }
 
-function creerChamp($name, $label, $value = '', $type = 'text', $isFile = false)
+function creerChamp($name, $label, $value = '', $type = 'text', $isFile = false, $required="required")
 {
     if ($isFile) {
         $afficheImage = '';
@@ -148,20 +148,20 @@ function creerChamp($name, $label, $value = '', $type = 'text', $isFile = false)
         // Champ de fichier";
         return "
         <label>
-            $label : <input type='file' name='$name'>
+            $label : <input type='file' name='$name' $required>
             $afficheImage
         </label><br>";
     } elseif ($type === 'textarea') {
         // Champ de texte long
         return "
         <label>
-            $label : <textarea name='$name'>$value</textarea>
+            $label : <textarea name='$name' $required>$value</textarea>
         </label><br>";
     } else {
         // Champ de texte ou autre type
         return "
         <label>
-            $label : <input type='$type' name='$name' value='$value'>
+            $label : <input type='$type' name='$name' value='$value' $required>
         </label><br>";
     }
 }

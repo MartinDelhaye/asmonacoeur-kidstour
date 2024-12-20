@@ -137,9 +137,7 @@ class MembreAssociation extends Users
             return "Données modifiées";
         }
         return "Échec de la mise à jour";
-    }  
     }
-
 
     public function ajouterInvite($nom, $prenom, $description, $contact, $image) {
         global $bdd;

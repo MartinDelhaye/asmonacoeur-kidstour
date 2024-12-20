@@ -23,33 +23,33 @@ $tab = Etapes::getListeEtapes(); // Méthode qui retourne un tableau d'étapes
 <body>
     <?php include('Composant/Header.php'); ?>
     <main>
-    <article>
-        <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les étapes</h1>
-    <div data-api="API/recupListeEtapes.php" id="formListeFiltreOrdre">  
-    <label for="ordre">Ordre : </Label>
-    <select id="ordre">
-        <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
-        <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
-        <option value="nom_etape ASC">Nom (A -> Z)</option>
-        <option value="nom_etape DESC">Nom (Z -> A)</option>
-    </select>
+        <article>
+            <h1 class="text-danger fw-bold d-flex justify-content-center align-items-center text-center">Les étapes</h1>
+            <div data-api="API/recupListeEtapes.php" class="formListeFiltreOrdre">
+                <label for="ordre">Ordre : </Label>
+                <select class="ordre">
+                    <option value="date_etape ASC, heure_etape ASC">Date (ascendant)</option>
+                    <option value="date_etape DESC, heure_etape DESC">Date (descendant)</option>
+                    <option value="nom_etape ASC">Nom (A -> Z)</option>
+                    <option value="nom_etape DESC">Nom (Z -> A)</option>
+                </select>
 
-    <label for="filtre">Filtre : </label>
-    <select id="filtre">
-        <option value="nom_etape" data-type="text">Nom</option>
-        <option value="date_etape" data-type="date">Date</option>
-</select>
-    <label for="filtreValeur">Valeur : </label>
-    <input type="text" id="filtreValeur" placeholder="Entrez une valeur">
-</div>
-<div id="listeInfo" data-template="templateListeEtapes"></div>
-</article>
-        
-   
-    <?php
-    include 'Composant/scrollTopBtn.php';
-    include 'Composant/Footer.php';
-    ?>
+                <label for="filtre">Filtre : </label>
+                <select class="filtre">
+                    <option value="nom_etape" data-type="text">Nom</option>
+                    <option value="date_etape" data-type="date">Date</option>
+                </select>
+                <label for="filtreValeur">Valeur : </label>
+                <input type="text" class="filtreValeur" placeholder="Entrez une valeur">
+                <div class="listeInfo" data-template="templateListeEtapes"></div>
+            </div>
+        </article>
+
+
+        <?php
+        include 'Composant/scrollTopBtn.php';
+        include 'Composant/Footer.php';
+        ?>
 </body>
 
 </html>

@@ -21,9 +21,16 @@ function viderDiv(div) {
 }
 
 /**
- * Affiche une liste en appellant une requête AJAX vers une API
+ * Affiche une liste en appelant une requête AJAX vers une API pour un formulaire spécifique
+ * @param {HTMLDivElement} formContainer 
+ * @returns void
  */
-function afficherListe() {
+function afficherListe(formContainer) {
+    const listeInfo = formContainer.querySelector('.listeInfo');
+    listeInfo.innerHTML = '<p>Chargement...</p>';
+    const ordre = formContainer.querySelector('.ordre');
+    const filtre = formContainer.querySelector('.filtre');
+    const filtreValeur = formContainer.querySelector('.filtreValeur');
 
     // Construire les paramètres de l'API
     let filtreAPI = `${filtre.value.trim()} LIKE '%${encodeURIComponent(filtreValeur.value.trim())}%'`;
@@ -33,20 +40,14 @@ function afficherListe() {
     let params = [];
 
     // Ajouter le paramètre filtre si défini
-    if (filtre.value && filtreValeur.value) {
-        params.push("filtre=" + encodeURIComponent(filtreAPI));
-    }
+    if (filtre.value && filtreValeur.value) params.push("filtre=" + encodeURIComponent(filtreAPI));
 
     // Ajouter le paramètre ordre si défini
-    if (ordre.value) {
-        params.push("ordre=" + ordreAPI);
-    }
+    if (ordre.value) params.push("ordre=" + ordreAPI);
 
     // Joindre tous les paramètres à l'URL
-    let API = formListeFiltreOrdre.dataset.api;
-    if (params.length > 0) {
-        API += "?" + params.join("&");
-    }
+    let API = formContainer.dataset.api;
+    if (params.length > 0) API += "?" + params.join("&");
 
     console.log("API URL : ", API); // Affiche l'URL de l'API pour debug
 
@@ -61,62 +62,49 @@ function afficherListe() {
             viderDiv(listeInfo);
 
             if (response.status !== "OK") {
-                console.log("Erreur :", response.status);
+                console.error("Erreur :", response.status);
                 let messageErreur = document.createElement('p');
-                messageErreur.innerHTML = response.status;
+                messageErreur.textContent = response.status;
                 listeInfo.appendChild(messageErreur);
                 return;
             }
 
-            // Créer un tableau pour stocker le rendu des étapes
-            let renderedContent = '';
-            console.log("liste : "+response.liste);
             let idTemplate = listeInfo.dataset.template;
-            response.liste.forEach(focus => {
-                const template = document.getElementById(idTemplate).innerHTML;
-                renderedContent += Mustache.render(template, focus); // Ajout de chaque étape au contenu
-            });
-
-            // Insérer tout le contenu généré dans la zone 
+            const template = document.getElementById(idTemplate).innerHTML;
+            let renderedContent = Mustache.render(template, response.liste);
             listeInfo.innerHTML = renderedContent;
-        }
+        }        
     };
     xhttp.send();
 }
 
-function changeTypeFiltre() {
-    // Récupère l'option sélectionnée dans le select
+function changeTypeFiltre(formContainer) {
+    const filtre = formContainer.querySelector('.filtre');
+    const filtreValeur = formContainer.querySelector('.filtreValeur');
     let selectedOption = filtre.options[filtre.selectedIndex];
-    // Applique son data-type au type de l'input
     filtreValeur.type = selectedOption.dataset.type;
-    // Reset la valeur 
     filtreValeur.value = '';
 }
 
-
-
-
 // ------------------------ Initialisation ------------------------
 function init() {
-    // Liste avec filtre et ordre
-    listeInfo = document.getElementById('listeInfo');
-    formListeFiltreOrdre = document.getElementById('formListeFiltreOrdre');
+    const allformListeFiltreOrdre = document.querySelectorAll('.formListeFiltreOrdre');
 
-    if (listeInfo && formListeFiltreOrdre) {
-        ordre = document.getElementById('ordre');
-        filtre = document.getElementById('filtre');
-        filtreValeur = document.getElementById('filtreValeur');
+    if(allformListeFiltreOrdre) {
+        allformListeFiltreOrdre.forEach(formContainer => {
+            const ordre = formContainer.querySelector('.ordre');
+            const filtre = formContainer.querySelector('.filtre');
+            const filtreValeur = formContainer.querySelector('.filtreValeur');
 
-        // Ajoute des événements pour chaque changement de filtre ou d'ordre
-        ordre.addEventListener('change', afficherListe);
-        filtreValeur.addEventListener('input', afficherListe);
-        filtre.addEventListener('change', changeTypeFiltre);
+            ordre.addEventListener('change', () => afficherListe(formContainer));
+            filtreValeur.addEventListener('input', () => afficherListe(formContainer));
+            filtre.addEventListener('change', () => changeTypeFiltre(formContainer));
 
-        // Afficher les étapes au chargement initial
-        afficherListe();
+            afficherListe(formContainer); // Charger la liste initiale
+        });
     }
 }
 
 // Attendre que le DOM soit prêt
-window.addEventListener('load', init);
+window.addEventListener('DOMContentLoaded', init);
 

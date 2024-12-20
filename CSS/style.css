@@ -207,3 +207,30 @@ body {
     border-radius: 50%;
 }
 
+
+/* Page de l'invité */
+
+.nomContact{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 30px;
+}
+
+.boxLienEtape{
+    margin-bottom: 30px;
+}
+
+.nomLienEtape{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #bf2a38;
+    font-weight: bold;
+}
+
+.lienEtape{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #555;
+}
+

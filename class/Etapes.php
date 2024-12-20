@@ -69,7 +69,7 @@ class Etapes
     }
 
     public function getNombreParticipant(){
-        $nbrParticipant = obtenirDonnees("SUM(participe.nbr_enfant_participe)", "participe", "fetch", "id_etape =".$this->id_etape);
+        $nbrParticipant = obtenirDonnees("SUM(participe.nbr_enfant_participe) AS nbr_enfant", "participe", "fetch", "id_etape =".$this->id_etape);
         return $nbrParticipant;
     }
 
